@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Saksham Bansal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f8f9fa;
+      --text-color: #212529;
+      --header-bg: #ffffff;
+      --link-color: #0077b6;
+      --footer-bg: #f1f3f5;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --header-bg: #1f1f1f;
+      --link-color: #90caf9;
+      --footer-bg: #1c1c1c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--header-bg);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+    }
+
+    nav a {
+      margin-left: 1.25rem;
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--link-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      color: var(--link-color);
+      cursor: pointer;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--footer-bg);
+      color: var(--text-color);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Saksham Bansal</h1>
+    <div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>I’m a second-year Electrical Engineering student at Georgia Tech, specializing in Robotics and Circuit Technology. I enjoy building embedded systems, prototyping with hardware, and applying engineering skills to solve real-world problems.</p>
+    <p>I'm actively involved in the IEEE Student Chapter and the Electronic ARTrium project, where I’ve contributed to automation and documentation efforts. I’ve also interned with HFCL and Promaxo, working on PoE modules and testing automation.</p>
+    <p>Outside of engineering, I enjoy art, collaborative projects, and exploring the intersection of hardware and intelligent systems.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Saksham Bansal
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    }
+
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+</body>
+
+</html>
