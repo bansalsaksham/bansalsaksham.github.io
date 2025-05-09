@@ -7,6 +7,22 @@
   <title>Saksham Bansal</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #f8f9fa;
+      --text-color: #212529;
+      --header-bg: #ffffff;
+      --link-color: #0077b6;
+      --footer-bg: #f1f3f5;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --header-bg: #1f1f1f;
+      --link-color: #90caf9;
+      --footer-bg: #1c1c1c;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -15,33 +31,41 @@
     }
 
     body {
-      background: #f8f9fa;
-      color: #212529;
+      background: var(--bg-color);
+      color: var(--text-color);
       line-height: 1.6;
     }
 
     header {
-      background: #ffffff;
+      background: var(--header-bg);
       padding: 1.5rem 2rem;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
       z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     header h1 {
       font-size: 1.75rem;
     }
 
-    nav {
-      margin-top: 0.5rem;
-    }
-
     nav a {
-      margin-right: 1.25rem;
-      color: #0077b6;
+      margin-left: 1.25rem;
+      color: var(--link-color);
       text-decoration: none;
       font-weight: 600;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--link-color);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      color: var(--link-color);
+      cursor: pointer;
     }
 
     section {
@@ -53,7 +77,6 @@
     h2 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      color: #333;
     }
 
     .project {
@@ -61,7 +84,7 @@
     }
 
     .project a {
-      color: #0077b6;
+      color: var(--link-color);
       text-decoration: none;
       font-weight: 600;
     }
@@ -69,8 +92,8 @@
     footer {
       text-align: center;
       padding: 2rem;
-      background: #f1f3f5;
-      color: #6c757d;
+      background: var(--footer-bg);
+      color: var(--text-color);
     }
   </style>
 </head>
@@ -78,41 +101,39 @@
 <body>
   <header>
     <h1>Saksham Bansal</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am a second-year Electrical Engineering student at Georgia Tech, focusing on Robotics and Circuit Technology. I enjoy building embedded systems, working on research projects, and applying engineering solutions to real-world challenges.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>SoilHawk</h3>
-      <p>IoT-based smart agriculture system using soil moisture, humidity, and pH sensors.</p>
-      <a href="https://github.com/sbansal91/SoilHawk" target="_blank">View on GitHub</a>
-    </div>
-    <div class="project">
-      <h3>Automated Timer Tap</h3>
-      <p>A water-saving automation project using microcontrollers and IR sensors.</p>
-      <a href="https://github.com/sbansal91/TimerTap" target="_blank">View on GitHub</a>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: sakshambansal@gatech.edu</p>
-    <p><a href="https://www.linkedin.com/in/sakshambansal91/" target="_blank">LinkedIn</a> | <a href="https://github.com/sbansal91" target="_blank">GitHub</a></p>
+  <section>
+    <h2>Welcome!</h2>
+    <p>This is the home page of Saksham Bansal's personal website. Navigate using the links above to learn more about me, explore projects, or get in touch.</p>
   </section>
 
   <footer>
     &copy; 2025 Saksham Bansal
   </footer>
+
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    }
+
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
 </body>
 
 </html>
