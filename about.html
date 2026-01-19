@@ -46,7 +46,44 @@
     .skill-category h4 { margin-bottom: 1rem; color: var(--accent-primary); font-family: 'Montserrat', sans-serif; font-weight: 700; }
     .skill-category ul { list-style: none; }
     .skill-category li { margin-bottom: 0.5rem; font-size: 0.9rem; }
-    @media (max-width: 768px) { .controls nav { display: none; } }
+    /* Mobile Responsive Fix */
+    @media (max-width: 768px) {
+      /* 1. Stack the Logo and Controls vertically */
+      header { 
+        flex-direction: column; 
+        gap: 1rem; 
+        padding: 1rem;
+      }
+
+      /* 2. Center the controls and allow wrapping */
+      .controls { 
+        width: 100%; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 1rem; 
+      }
+
+      /* 3. UN-HIDE the Navigation and space it out */
+      .controls nav { 
+        display: flex; 
+        gap: 1rem; 
+        justify-content: center;
+        width: 100%; /* Force nav to its own line if needed */
+      }
+
+      /* 4. Adjust Link Sizing */
+      nav a { 
+        margin-left: 0 !important; /* Remove the desktop left-margin */
+        font-size: 0.85rem; 
+      }
+
+      /* 5. Adjust Titles and Grids */
+      .hero-title { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .grid, .project-grid, .contact-grid, .skills-grid { 
+        grid-template-columns: 1fr; 
+      }
+    }
   </style>
   <script>
     (function() { const savedTheme = localStorage.getItem("theme") || "light"; document.documentElement.setAttribute("data-theme", savedTheme); })();
@@ -84,7 +121,7 @@
         <p>Optimized MRI-compatible surgical robotic actuators, improving torque-speed-power efficiency by 15% through Python modeling and parameter sweeps.</p>
       </div>
       <div class="timeline-item">
-        <h3>Electronic Atrium (GT VIP)</h3>
+        <h3>Electronic Artrium (GT VIP)</h3>
         <span class="role">Undergraduate Researcher</span>
         <span class="date">January 2025 - Present</span>
         <p>Implemented TCP/IP communication for Arduino nodes and processed 3D depth data from Orbbec Gemini E sensors to enhance spatial awareness.</p>
