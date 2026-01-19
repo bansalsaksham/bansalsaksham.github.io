@@ -51,7 +51,7 @@
 <body>
   <audio id="bg-audio" loop><source src="bg-sound.mp3" type="audio/mpeg"></audio>
   <header>
-    <a href="index.html" class="brand">Saksham.Bansal</a>
+    <a href="index.html" class="brand">Saksham Bansal</a>
     <div class="controls">
       <nav>
         <a href="about.html">ABOUT</a>
@@ -59,7 +59,7 @@
         <a href="contact.html" style="margin-left: 1.5rem;">CONTACT</a>
       </nav>
       <button class="toggle-btn" onclick="toggleTheme()"><span id="theme-icon">☀️</span></button>
-      <button class="toggle-btn" onclick="toggleSound()"><span id="sound-icon">🔇</span></button>
+      <!-- <button class="toggle-btn" onclick="toggleSound()"><span id="sound-icon">🔇</span></button> -->
     </div>
   </header>
   <main>
@@ -83,7 +83,7 @@
   <script>
     function toggleTheme() { const html = document.documentElement; const icon = document.getElementById('theme-icon'); const current = html.getAttribute("data-theme"); if (current === "dark") { html.setAttribute("data-theme", "light"); localStorage.setItem("theme", "light"); icon.textContent = "☀️"; } else { html.setAttribute("data-theme", "dark"); localStorage.setItem("theme", "dark"); icon.textContent = "🌙"; } }
     document.addEventListener("DOMContentLoaded", () => { const current = localStorage.getItem("theme") || "light"; document.getElementById('theme-icon').textContent = current === "dark" ? "🌙" : "☀️"; });
-    function toggleSound() { const audio = document.getElementById('bg-audio'); const icon = document.getElementById('sound-icon'); if (audio.paused) { audio.play().catch(e => alert("Interact with page first.")); icon.textContent = "🔊"; } else { audio.pause(); icon.textContent = "🔇"; } }
+    // function toggleSound() { const audio = document.getElementById('bg-audio'); const icon = document.getElementById('sound-icon'); if (audio.paused) { audio.play().catch(e => alert("Interact with page first.")); icon.textContent = "🔊"; } else { audio.pause(); icon.textContent = "🔇"; } }
   </script>
 </body>
 </html>
