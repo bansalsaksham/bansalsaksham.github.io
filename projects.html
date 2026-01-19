@@ -33,6 +33,7 @@
     .project-card {
       background: var(--card-bg); border: 1px solid var(--border-color);
       border-radius: 10px; padding: 2rem; transition: transform 0.2s;
+      display: flex; flex-direction: column;
     }
     .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     
@@ -44,7 +45,7 @@
     .tags { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .tag { background: var(--tag-bg); color: var(--tag-text); padding: 0.25rem 0.75rem; border-radius: 5px; font-size: 0.85rem; font-weight: 600; }
 
-    .project-desc { font-size: 1rem; margin-bottom: 1rem; }
+    .project-desc { font-size: 1rem; margin-bottom: 1rem; flex-grow: 1; }
     .project-metric { font-weight: 600; color: var(--link-color); display: block; margin-top: 0.5rem; }
 
     footer { text-align: center; padding: 2rem; background: var(--footer-bg); margin-top: auto; }
@@ -73,7 +74,7 @@
     <div class="project-card">
       <div class="project-header">
         <div class="project-title">RTL 64-bit Calculator</div>
-        <a href="#" class="project-link">View Repo</a>
+        <a href="https://github.com/bansalsaksham/RTL-to-GDSII-64-bit-Calculator" target="_blank" class="project-link">View Repo</a>
       </div>
       <div class="tags">
         <span class="tag">SystemVerilog</span>
@@ -81,41 +82,27 @@
         <span class="tag">UVM</span>
       </div>
       <p class="project-desc">Independently owned functional verification of a memory-mapped 64-bit calculator. Executed simulations and performed waveform debugging in Verdi.</p>
-      <span class="project-metric">Result: Reached 99.2% functional coverage[cite: 36, 40].</span>
+      <span class="project-metric">Result: Reached 99.2% functional coverage.</span>
     </div>
 
     <div class="project-card">
       <div class="project-header">
         <div class="project-title">SoilHawk</div>
-        <a href="#" class="project-link">View Repo</a>
+        <a href="https://github.com/bansalsaksham/automatic_irrigation_system" target="_blank" class="project-link">View Repo</a>
       </div>
       <div class="tags">
         <span class="tag">Arduino</span>
         <span class="tag">IoT</span>
         <span class="tag">Sensors</span>
       </div>
-      <p class="project-desc">Developed an Arduino sensor network for real-time soil monitoring and irrigation control.</p>
-      <span class="project-metric">Result: Boosted irrigation efficiency by 60% on a 4-acre site[cite: 46, 48].</span>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-title">SCOMP Memory Peripheral</div>
-        <a href="#" class="project-link">View Repo</a>
-      </div>
-      <div class="tags">
-        <span class="tag">VHDL</span>
-        <span class="tag">FPGA</span>
-        <span class="tag">Digital Design</span>
-      </div>
-      <p class="project-desc">Designed a VHDL memory peripheral to expand SCOMP processor capacity to 65,536 16-bit addressable locations.</p>
-      <span class="project-metric">Result: Validated design at 50 MHz with full bus integration[cite: 42, 44, 45].</span>
+      <p class="project-desc">Developed an Arduino sensor network for real-time soil monitoring and irrigation control to optimize water usage.</p>
+      <span class="project-metric">Result: Boosted irrigation efficiency by 60% on a 4-acre site.</span>
     </div>
 
     <div class="project-card">
       <div class="project-header">
         <div class="project-title">Mbed Game Engine</div>
-        <a href="#" class="project-link">View Repo</a>
+        <a href="https://github.com/bansalsaksham/wordle_mbed" target="_blank" class="project-link">View Repo</a>
       </div>
       <div class="tags">
         <span class="tag">C++</span>
@@ -123,7 +110,21 @@
         <span class="tag">Embedded</span>
       </div>
       <p class="project-desc">Developed an ARM-based game engine utilizing a doubly linked list for memory optimization and a custom pixel-rendering UI.</p>
-      <span class="project-metric">Result: Improved user input efficiency by 30%[cite: 50, 52, 53].</span>
+      <span class="project-metric">Result: Improved user input efficiency by 30%.</span>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-title">Line Follower Robot</div>
+        <a href="https://github.com/bansalsaksham/Line_follower" target="_blank" class="project-link">View Repo</a>
+      </div>
+      <div class="tags">
+        <span class="tag">Robotics</span>
+        <span class="tag">Control Systems</span>
+        <span class="tag">IR Sensors</span>
+      </div>
+      <p class="project-desc">Designed an autonomous robot capable of tracking a path using infrared sensors and real-time motor control logic.</p>
+      <span class="project-metric">Focus: Sensor integration and actuator control.</span>
     </div>
 
   </div>
