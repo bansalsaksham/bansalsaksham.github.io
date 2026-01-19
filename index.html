@@ -4,212 +4,255 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saksham Bansal | Electrical Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Saksham Bansal | Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Professional Engineering Palette */
-      --bg-color: #f8f9fa;
-      --text-color: #343a40;
-      --header-bg: #0b1c2c; /* Deep Navy */
-      --header-text: #ffffff;
-      --accent-blue: #0077b6; /* "Electric" Blue */
-      --accent-teal: #00b4d8;
-      --card-bg: #ffffff;
-      --border-color: #e9ecef;
+      /* Default (Light Mode) - Clean Engineering */
+      --bg-color: #eef2f5;
+      --text-color: #2d3436;
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.5);
+      --accent-primary: #0984e3; /* Electron Blue */
+      --accent-secondary: #00cec9; /* Circuit Teal */
+      --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    [data-theme="dark"] {
+      /* Dark Mode - Cyberpunk Professional */
+      --bg-color: #0f111a;
+      --text-color: #dfe6e9;
+      --glass-bg: rgba(22, 27, 34, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --accent-primary: #74b9ff;
+      --accent-secondary: #81ecec;
+      --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+    
     body { 
       background-color: var(--bg-color); 
       color: var(--text-color); 
-      line-height: 1.6; 
-      display: flex; 
-      flex-direction: column; 
+      font-family: 'Space Mono', monospace; 
       min-height: 100vh;
-      /* Subtle engineering grid pattern */
-      background-image: radial-gradient(#dee2e6 1px, transparent 1px);
-      background-size: 20px 20px;
+      display: flex; flex-direction: column;
+      background-image: radial-gradient(var(--text-color) 0.5px, transparent 0.5px);
+      background-size: 30px 30px;
+      opacity: 0.95; /* Blends pattern */
     }
 
-    /* Header: Dark & authoritative */
+    /* --- GLASS HEADER --- */
     header {
-      background: var(--header-bg);
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border);
       padding: 1rem 2rem;
       position: sticky; top: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    header h1 { 
-      font-family: 'Montserrat', sans-serif; 
-      font-size: 1.5rem; 
-      font-weight: 800; 
-      color: var(--header-text);
-      letter-spacing: -0.5px;
-    }
+    .brand { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.2rem; letter-spacing: -1px; }
 
-    nav a {
-      margin-left: 2rem;
-      color: #aab2bd; /* Muted gray for unselected */
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #ffffff; }
-    nav a.active { color: #ffffff; border-bottom: 2px solid var(--accent-blue); padding-bottom: 4px; }
-
-    /* Main Layout */
-    main { flex: 1; padding: 5rem 2rem; max-width: 1100px; margin: auto; width: 100%; text-align: center; }
-
-    /* Hero Section */
-    .hero-tagline {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3.5rem;
-      line-height: 1.1;
-      font-weight: 900;
-      margin-bottom: 1.5rem;
-      color: var(--header-bg);
-    }
+    /* Control Panel (Nav + Toggles) */
+    .controls { display: flex; align-items: center; gap: 1.5rem; }
     
-    /* Coloring the 3 I's */
-    .word-initiate { color: var(--header-bg); } /* Dark */
-    .word-innovate { color: var(--accent-blue); } /* Blue */
-    .word-integrate { color: var(--accent-teal); } /* Teal */
+    nav a {
+      text-decoration: none; color: var(--text-color); font-weight: 700; font-size: 0.9rem;
+      position: relative;
+    }
+    nav a::after {
+      content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+      background-color: var(--accent-primary); transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    .toggle-btn {
+      background: none; border: 2px solid var(--glass-border); border-radius: 50%;
+      cursor: pointer; font-size: 1.2rem; padding: 0.4rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .toggle-btn:hover { transform: scale(1.1); background: var(--glass-border); }
+
+    /* --- HERO SECTION --- */
+    main { flex: 1; padding: 6rem 2rem; max-width: 1200px; margin: auto; text-align: center; }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem; line-height: 1; font-weight: 900;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--text-color) 30%, var(--accent-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0; animation: fadeIn 1s forwards;
+    }
+
+    /* The "3 I's" Animation */
+    .hero-title span { display: block; }
+    .hero-title span:nth-child(2) { animation-delay: 0.2s; }
+    .hero-title span:nth-child(3) { animation-delay: 0.4s; }
 
     .hero-sub {
-      font-size: 1.25rem;
-      color: #6c757d;
-      max-width: 700px;
-      margin: 0 auto 3rem auto;
+      font-size: 1.1rem; color: var(--accent-primary); margin-bottom: 3rem;
+      opacity: 0; animation: fadeIn 1s forwards 0.8s;
     }
 
-    /* Buttons: Clean & Flat */
-    .btn-group { display: flex; gap: 1rem; justify-content: center; }
-    
+    /* --- CONNECTED BUTTONS --- */
+    .btn-container {
+      display: inline-flex;
+      background: var(--glass-bg);
+      padding: 0.5rem; border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--glass-border);
+      opacity: 0; animation: fadeIn 1s forwards 1s;
+    }
+
     .btn {
-      padding: 0.8rem 2rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    
-    .btn-primary {
-      background: var(--header-bg);
-      color: white;
-    }
-    .btn-primary:hover {
-      background: var(--accent-blue);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
+      padding: 1rem 2.5rem; text-decoration: none; font-weight: 700; font-size: 1rem;
+      border-radius: 8px; transition: all 0.3s;
     }
 
-    .btn-outline {
-      background: white;
-      border: 2px solid var(--header-bg);
-      color: var(--header-bg);
-    }
-    .btn-outline:hover {
-      background: var(--bg-color);
-      transform: translateY(-2px);
-    }
+    .btn-fill { background: var(--accent-primary); color: white; margin-right: 0.5rem; }
+    .btn-fill:hover { background: var(--accent-secondary); box-shadow: 0 0 15px var(--accent-secondary); }
 
-    /* Feature Grid */
-    .grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 5rem;
-      text-align: left;
-    }
+    .btn-outline { background: transparent; color: var(--text-color); }
+    .btn-outline:hover { background: rgba(0,0,0,0.05); }
+
+    /* --- CARDS --- */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 6rem; }
     
     .card {
-      background: var(--card-bg);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      transition: all 0.3s ease;
-      position: relative; overflow: hidden;
+      background: var(--glass-bg); padding: 2rem; border-radius: 16px;
+      border: 1px solid var(--glass-border); box-shadow: var(--shadow);
+      text-align: left; transition: transform 0.3s;
     }
+    .card:hover { transform: translateY(-10px); border-color: var(--accent-primary); }
     
-    /* Engineering Accent Bar on Cards */
-    .card::top {
-      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-      background: var(--header-bg);
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      border-color: var(--accent-blue);
-    }
+    .card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .card h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.9rem; opacity: 0.8; }
 
-    .card h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.25rem;
-      color: var(--header-bg);
-      margin-bottom: 0.75rem;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; opacity: 0.6; }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: var(--header-bg);
-      color: #888;
-      font-size: 0.9rem;
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.5rem; }
+      .controls nav { display: none; } /* Hide text nav on mobile, keep icons */
     }
   </style>
+  
+  <script>
+    // Theme Logic to prevent flash
+    (function() {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
 </head>
 
 <body>
+
+  <audio id="bg-audio" loop>
+    <source src="bg-sound.mp3" type="audio/mpeg">
+  </audio>
+
   <header>
-    <h1>Saksham Bansal</h1>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+    <div class="brand">Saksham.Bansal</div>
+    <div class="controls">
+      <nav>
+        <a href="about.html">ABOUT</a>
+        <a href="projects.html" style="margin-left: 1.5rem;">PROJECTS</a>
+        <a href="contact.html" style="margin-left: 1.5rem;">CONTACT</a>
+      </nav>
+      
+      <button class="toggle-btn" onclick="toggleTheme()" title="Toggle Theme">
+        <span id="theme-icon">☀️</span>
+      </button>
+      
+      <button class="toggle-btn" onclick="toggleSound()" title="Toggle Sound">
+        <span id="sound-icon">🔇</span>
+      </button>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2 class="hero-tagline">
-        <span class="word-initiate">INITIATE.</span><br>
-        <span class="word-innovate">INNOVATE.</span><br>
-        <span class="word-integrate">INTEGRATE.</span>
-      </h2>
-      
-      <p class="hero-sub">
-        The power of these three principles drives every purpose in my life.<br>
-        <strong>Electrical Engineering Student @ Georgia Tech</strong>
-      </p>
+    <h1 class="hero-title">
+      <span>INITIATE.</span>
+      <span>INNOVATE.</span>
+      <span>INTEGRATE.</span>
+    </h1>
+    
+    <p class="hero-sub">Electrical Engineering Student @ Georgia Tech</p>
 
-      <div class="btn-group">
-        <a href="projects.html" class="btn btn-primary">View Engineering Portfolio</a>
-        <a href="Resume - Saksham Bansal.pdf" class="btn btn-outline" target="_blank">Download Resume</a>
-      </div>
-    </section>
+    <div class="btn-container">
+      <a href="projects.html" class="btn btn-fill">EXPLORE WORK</a>
+      <a href="Resume - Saksham Bansal.pdf" class="btn btn-outline" target="_blank">RESUME</a>
+    </div>
 
-    <section class="grid">
-      <div class="card" style="border-top: 4px solid var(--header-bg);">
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">⚡</div>
         <h3>PCB Design</h3>
-        <p>Experience designing complex boards using Altium & KiCad, taking projects from schematic capture to fabrication.</p>
+        <p>Altium & KiCad. Schematic to fabrication.</p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-blue);">
-        <h3>Embedded Systems</h3>
-        <p>Programming microcontrollers (STM32, Arduino, ESP32) for real-world robotics and sensing applications.</p>
+      <div class="card">
+        <div class="card-icon">🤖</div>
+        <h3>Embedded</h3>
+        <p>STM32 & Arduino. Code meets reality.</p>
       </div>
-      <div class="card" style="border-top: 4px solid var(--accent-teal);">
+      <div class="card">
+        <div class="card-icon">🚀</div>
         <h3>Leadership</h3>
-        <p>Driving innovation as VP of IEEE GT and facilitating technical growth as an Autodesk Campus Ambassador.</p>
+        <p>IEEE VP & Autodesk Ambassador.</p>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer>
     &copy; 2026 Saksham Bansal
   </footer>
+
+  <script>
+    // Theme Toggle Logic
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('theme-icon');
+      const current = html.getAttribute("data-theme");
+      
+      if (current === "dark") {
+        html.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
+        icon.textContent = "☀️";
+      } else {
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        icon.textContent = "🌙";
+      }
+    }
+
+    // Set initial icon based on saved theme
+    document.addEventListener("DOMContentLoaded", () => {
+      const current = localStorage.getItem("theme") || "light";
+      document.getElementById('theme-icon').textContent = current === "dark" ? "🌙" : "☀️";
+    });
+
+    // //Sound Toggle Logic
+    // function toggleSound() {
+    //   const audio = document.getElementById('bg-audio');
+    //   const icon = document.getElementById('sound-icon');
+      
+    //   if (audio.paused) {
+    //     audio.play().catch(e => alert("Please interact with the document first (browser policy)."));
+    //     icon.textContent = "🔊";
+    //   } else {
+    //     audio.pause();
+    //     icon.textContent = "🔇";
+    //   }
+    // } 
+  </script>
 </body>
 </html>
