@@ -45,7 +45,44 @@
     .tags { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .tag { background: rgba(9, 132, 227, 0.1); color: var(--accent-primary); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
     .project-desc { font-size: 0.95rem; opacity: 0.8; margin-bottom: 1rem; flex-grow: 1; }
-    @media (max-width: 768px) { .controls nav { display: none; } }
+    /* Mobile Responsive Fix */
+    @media (max-width: 768px) {
+      /* 1. Stack the Logo and Controls vertically */
+      header { 
+        flex-direction: column; 
+        gap: 1rem; 
+        padding: 1rem;
+      }
+
+      /* 2. Center the controls and allow wrapping */
+      .controls { 
+        width: 100%; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 1rem; 
+      }
+
+      /* 3. UN-HIDE the Navigation and space it out */
+      .controls nav { 
+        display: flex; 
+        gap: 1rem; 
+        justify-content: center;
+        width: 100%; /* Force nav to its own line if needed */
+      }
+
+      /* 4. Adjust Link Sizing */
+      nav a { 
+        margin-left: 0 !important; /* Remove the desktop left-margin */
+        font-size: 0.85rem; 
+      }
+
+      /* 5. Adjust Titles and Grids */
+      .hero-title { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .grid, .project-grid, .contact-grid, .skills-grid { 
+        grid-template-columns: 1fr; 
+      }
+    }
   </style>
   <script>
     (function() { const savedTheme = localStorage.getItem("theme") || "light"; document.documentElement.setAttribute("data-theme", savedTheme); })();
