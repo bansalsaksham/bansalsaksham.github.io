@@ -1,142 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Saksham Bansal</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    /* Consistent Theme Variables */
     :root {
-      --bg-color: #f8f9fa;
-      --text-color: #212529;
-      --header-bg: #ffffff;
-      --link-color: #0077b6;
-      --footer-bg: #f1f3f5;
+      --bg-color: #f8f9fa; --text-color: #212529; --header-bg: #ffffff;
+      --link-color: #0077b6; --footer-bg: #f1f3f5; --card-bg: #ffffff; --border-color: #e9ecef;
+      --hover-bg: #f1f8ff;
     }
-
     [data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #e0e0e0;
-      --header-bg: #1f1f1f;
-      --link-color: #90caf9;
-      --footer-bg: #1c1c1c;
+      --bg-color: #121212; --text-color: #e0e0e0; --header-bg: #1f1f1f;
+      --link-color: #90caf9; --footer-bg: #1c1c1c; --card-bg: #2d2d2d; --border-color: #333333;
+      --hover-bg: #1a3b5c;
     }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+    
+    body { background: var(--bg-color); color: var(--text-color); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+    
+    /* Header */
+    header { background: var(--header-bg); padding: 1.5rem 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { font-size: 1.5rem; font-weight: 800; }
+    nav a { margin-left: 1.25rem; color: var(--text-color); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+    nav a:hover { color: var(--link-color); }
+    .theme-toggle { background: none; border: 1px solid var(--text-color); padding: 0.5rem 1rem; border-radius: 5px; color: var(--text-color); cursor: pointer; margin-left: 1rem; }
+    
+    /* Main Content */
+    main { flex: 1; padding: 4rem 2rem; max-width: 800px; margin: auto; width: 100%; text-align: center; }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+    .intro { margin-bottom: 3rem; }
+    .intro h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
+    .intro p { font-size: 1.2rem; color: #666; }
+    [data-theme="dark"] .intro p { color: #aaa; }
 
-    body {
-      background: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
+    /* Contact Grid */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    
+    .contact-card {
+      background: var(--card-bg); padding: 2rem; border-radius: 12px;
+      border: 1px solid var(--border-color); text-decoration: none; color: var(--text-color);
+      transition: transform 0.2s, background-color 0.2s;
+      display: flex; flex-direction: column; align-items: center;
     }
+    
+    .contact-card:hover { transform: translateY(-5px); background-color: var(--hover-bg); border-color: var(--link-color); }
+    
+    .icon { font-size: 2rem; margin-bottom: 1rem; }
+    .label { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .value { color: var(--link-color); font-size: 0.95rem; }
 
-    header {
-      background: var(--header-bg);
-      padding: 1.5rem 2rem;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header h1 {
-      font-size: 1.75rem;
-    }
-
-    nav a {
-      margin-left: 1.25rem;
-      color: var(--link-color);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--link-color);
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      color: var(--link-color);
-      cursor: pointer;
-    }
-
-    section {
-      padding: 4rem 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info a {
-      color: var(--link-color);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: var(--footer-bg);
-      color: var(--text-color);
-    }
+    footer { text-align: center; padding: 2rem; background: var(--footer-bg); margin-top: auto; }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Saksham Bansal</h1>
-    <div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-  </header>
 
-  <section>
-    <h2>Get in Touch</h2>
-    <p class="contact-info">📧 Email: <a href="mailto:sakshambansal@gatech.edu">sakshambansal@gatech.edu</a></p>
-    <p class="contact-info">🔗 LinkedIn: <a href="https://www.linkedin.com/in/bansalsaksham/" target="_blank">linkedin.com/in/sakshambansal91</a></p>
-    <p class="contact-info">🐱 GitHub: <a href="https://github.com/bansalsaksham" target="_blank">github.com/sbansal91</a></p>
+<header>
+  <h1>Saksham Bansal</h1>
+  <div style="display: flex; align-items: center;">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <h2>Let's Connect.</h2>
+    <p>I am actively seeking a <strong>Summer 2026 Internship</strong> in Silicon and Hardware Engineering. I am based in Atlanta, GA and open to relocation.</p>
   </section>
 
-  <footer>
-    &copy; 2025 Saksham Bansal
-  </footer>
+  <div class="contact-grid">
+    
+    <a href="mailto:sakshambansal@gatech.edu" class="contact-card">
+      <div class="icon">📧</div>
+      <span class="label">Email</span>
+      <span class="value">sakshambansal@gatech.edu</span>
+    </a>
 
-  <script>
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", newTheme);
-      localStorage.setItem("theme", newTheme);
-    }
+    <a href="https://linkedin.com/in/bansalsaksham" target="_blank" class="contact-card">
+      <div class="icon">🔗</div>
+      <span class="label">LinkedIn</span>
+      <span class="value">in/bansalsaksham</span>
+    </a>
 
-    (function () {
-      const savedTheme = localStorage.getItem("theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    })();
-  </script>
+    <a href="https://github.com/bansalsaksham" target="_blank" class="contact-card">
+      <div class="icon">🐱</div>
+      <span class="label">GitHub</span>
+      <span class="value">github.com/bansalsaksham</span>
+    </a>
+
+    <a href="tel:+14049360025" class="contact-card">
+      <div class="icon">📞</div>
+      <span class="label">Phone</span>
+      <span class="value">404-936-0025</span>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 Saksham Bansal | Hosted on GitHub Pages
+</footer>
+
+<script>
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  }
+  (function () {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  })();
+</script>
 </body>
-
 </html>
