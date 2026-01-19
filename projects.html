@@ -6,10 +6,7 @@
   <title>Projects | Saksham Bansal</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Paste the shared CSS from index.html here first */
-    /* ... (The root, body, header, footer css) ... */
-    
-    /* Project Specific Overrides */
+    /* Shared Theme CSS */
     :root {
       --bg-color: #f0f4f8; --text-color: #2d3436;
       --glass-bg: rgba(255, 255, 255, 0.65); --glass-border: rgba(255, 255, 255, 0.8);
@@ -36,7 +33,7 @@
     main { flex: 1; padding: 4rem 2rem; max-width: 1200px; margin: auto; width: 100%; }
     footer { text-align: center; padding: 3rem; font-size: 0.9rem; opacity: 0.7; font-weight: 600; }
 
-    /* Page Specifics */
+    /* Project Specifics */
     h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-color); border-left: 5px solid var(--accent-primary); padding-left: 1.5rem; }
     .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
     .project-card { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow); transition: transform 0.3s; display: flex; flex-direction: column; }
@@ -48,7 +45,6 @@
     .tags { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .tag { background: rgba(9, 132, 227, 0.1); color: var(--accent-primary); padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
     .project-desc { font-size: 0.95rem; opacity: 0.8; margin-bottom: 1rem; flex-grow: 1; }
-    .project-metric { font-size: 0.9rem; font-weight: 700; color: var(--accent-secondary); display: block; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--glass-border); }
     @media (max-width: 768px) { .controls nav { display: none; } }
   </style>
   <script>
@@ -66,49 +62,122 @@
         <a href="contact.html" style="margin-left: 1.5rem;">CONTACT</a>
       </nav>
       <button class="toggle-btn" onclick="toggleTheme()"><span id="theme-icon">☀️</span></button>
-      <!-- // <button class="toggle-btn" onclick="toggleSound()"><span id="sound-icon">🔇</span></button> -->
+      <!-- <button class="toggle-btn" onclick="toggleSound()"><span id="sound-icon">🔇</span></button> -->
     </div>
   </header>
 
   <main>
     <h2>Projects</h2>
     <div class="project-grid">
+
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">RTL 64-bit Calculator</div>
           <a href="https://github.com/bansalsaksham/RTL-to-GDSII-64-bit-Calculator" target="_blank" class="project-link">REPO</a>
         </div>
         <div class="tags"><span class="tag">SystemVerilog</span><span class="tag">Cadence</span></div>
-        <p class="project-desc">Independently owned functional verification of a memory-mapped 64-bit calculator. Executed simulations in Verdi.</p>
-        <span class="project-metric">>> 99.2% Functional Coverage</span>
+        <p class="project-desc">Functional verification of a memory-mapped 64-bit calculator using UVM and Verdi.</p>
       </div>
+
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">SoilHawk</div>
           <a href="https://github.com/bansalsaksham/automatic_irrigation_system" target="_blank" class="project-link">REPO</a>
         </div>
         <div class="tags"><span class="tag">Arduino</span><span class="tag">IoT</span></div>
-        <p class="project-desc">Arduino sensor network for real-time soil monitoring and irrigation control to optimize water usage.</p>
-        <span class="project-metric">>> +60% Irrigation Efficiency</span>
+        <p class="project-desc">Automated irrigation system with sensor networks to optimize water usage in rural environments.</p>
       </div>
+
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Mbed Game Engine</div>
           <a href="https://github.com/bansalsaksham/wordle_mbed" target="_blank" class="project-link">REPO</a>
         </div>
         <div class="tags"><span class="tag">C++</span><span class="tag">ARM Mbed</span></div>
-        <p class="project-desc">Developed an ARM-based game engine utilizing a doubly linked list for memory optimization.</p>
-        <span class="project-metric">>> +30% Input Efficiency</span>
+        <p class="project-desc">ARM-based game engine utilizing doubly linked lists for memory optimization.</p>
       </div>
+
       <div class="project-card">
         <div class="project-header">
           <div class="project-title">Line Follower</div>
           <a href="https://github.com/bansalsaksham/Line_follower" target="_blank" class="project-link">REPO</a>
         </div>
         <div class="tags"><span class="tag">Robotics</span><span class="tag">Control</span></div>
-        <p class="project-desc">Autonomous robot capable of tracking a path using infrared sensors and real-time motor control logic.</p>
-        <span class="project-metric">>> Operational Prototype</span>
+        <p class="project-desc">Autonomous robot tracking paths using infrared sensors and real-time motor control.</p>
       </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Receipt Rover</div>
+          <a href="https://github.com/bansalsaksham/receipt_rover" target="_blank" class="project-link">REPO</a>
+        </div>
+        <div class="tags"><span class="tag">Software</span><span class="tag">Automation</span></div>
+        <p class="project-desc">Automated receipt processing and data extraction tool.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Smart Cane</div>
+          <a href="https://github.com/bansalsaksham/smart_cane" target="_blank" class="project-link">REPO</a>
+        </div>
+        <div class="tags"><span class="tag">IoT</span><span class="tag">Assistive Tech</span></div>
+        <p class="project-desc">Smart assistive device integrated with sensors for obstacle detection.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Home Security Alarm</div>
+          <a href="https://github.com/bansalsaksham/Home_Security_Alarm" target="_blank" class="project-link">REPO</a>
+        </div>
+        <div class="tags"><span class="tag">Sensors</span><span class="tag">Safety</span></div>
+        <p class="project-desc">Sensor-based security system for intruder detection and alerting.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Tic-Tac-Toe</div>
+          <a href="https://github.com/bansalsaksham/tic-tac-toe" target="_blank" class="project-link">REPO</a>
+        </div>
+        <div class="tags"><span class="tag">C++</span><span class="tag">Game Logic</span></div>
+        <p class="project-desc">Algorithmic implementation of the classic game with optimized logic.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">AI Project</div>
+          <a href="https://github.com/bansalsaksham/AI_Project" target="_blank" class="project-link">REPO</a>
+        </div>
+        <div class="tags"><span class="tag">Artificial Intelligence</span><span class="tag">ML</span></div>
+        <p class="project-desc">Exploration of machine learning models and artificial intelligence algorithms.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Noise Indicator</div>
+          <a href="https://github.com/bansalsaksham/noise_indicator" target="_blank" class="project-link">REPO</a>
+        </div>
+        <div class="tags"><span class="tag">Analog</span><span class="tag">Signal Processing</span></div>
+        <p class="project-desc">Audio signal processing circuit for monitoring environmental noise levels.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Automated Timer Tap</div>
+          <a href="https://github.com/bansalsaksham/automated_timer_tap" target="_blank" class="project-link">REPO</a>
+        </div>
+        <div class="tags"><span class="tag">Automation</span><span class="tag">Embedded</span></div>
+        <p class="project-desc">Timed automated water dispensing system for conservation and hygiene.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Grid Guard</div>
+          <a href="https://github.com/bansalsaksham/Grid_Guard" target="_blank" class="project-link">REPO</a>
+        </div>
+        <div class="tags"><span class="tag">Power Systems</span><span class="tag">Protection</span></div>
+        <p class="project-desc">Protection and monitoring system for electrical grid stability.</p>
+      </div>
+
     </div>
   </main>
   <footer>&copy; 2026 Saksham Bansal</footer>
