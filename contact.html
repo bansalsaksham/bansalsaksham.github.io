@@ -42,7 +42,49 @@
     .icon { font-size: 2rem; margin-bottom: 1rem; }
     .label { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; font-family: 'Montserrat', sans-serif; }
     .value { color: var(--accent-primary); font-size: 0.9rem; }
-    @media (max-width: 768px) { .controls nav { display: none; } }
+    /* Mobile Layout: Line 1 Name, Line 2 Nav & Toggles */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.8rem;
+      }
+
+      /* Line 1: Name (Centered) */
+      .brand {
+        width: 100%;
+        text-align: center;
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+
+      /* Line 2: Nav Links + Toggles together */
+      .controls {
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap; /* Allows wrapping on very small screens */
+      }
+
+      /* Make sure Nav is visible */
+      .controls nav {
+        display: flex;
+        gap: 1rem;
+      }
+
+      /* Toggles adjustment */
+      .toggle-btn {
+        font-size: 1.1rem;
+        padding: 0.3rem;
+      }
+
+      /* General Mobile Font Sizes */
+      .hero-title { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
+      .grid, .project-grid, .contact-grid, .skills-grid { 
+        grid-template-columns: 1fr; 
+      }
+    }
   </style>
   <script>
     (function() { const savedTheme = localStorage.getItem("theme") || "light"; document.documentElement.setAttribute("data-theme", savedTheme); })();
@@ -69,21 +111,31 @@
     </section>
     <div class="contact-grid">
       <a href="mailto:sakshambansal@gatech.edu" class="contact-card">
-        <div class="icon">📧</div><span class="label">EMAIL</span><span class="value">sakshambansal@gatech.edu</span>
+        <div class="icon" style="font-size: 2rem;">📧</div>
+        <span class="label">EMAIL</span><span class="value">sakshambansal@gatech.edu</span>
       </a>
+
       <a href="https://linkedin.com/in/bansalsaksham" target="_blank" class="contact-card">
-        <div class="icon">🔗</div><span class="label">LINKEDIN</span><span class="value">in/bansalsaksham</span>
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </div>
+        <span class="label">LINKEDIN</span><span class="value">in/bansalsaksham</span>
       </a>
+
       <a href="https://github.com/bansalsaksham" target="_blank" class="contact-card">
-        <div class="icon" style="display: flex; justify-content: center;">
-  <svg height="32" viewBox="0 0 16 16" width="32" style="fill: var(--text-color);">
-    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-  </svg>
-</div>
-<span class="label">GITHUB</span><span class="value">github.com/bansalsaksham</span>
+        <div class="icon">
+          <svg viewBox="0 0 16 16">
+             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+        </div>
+        <span class="label">GITHUB</span><span class="value">github.com/bansalsaksham</span>
       </a>
+
       <a href="tel:+14049360025" class="contact-card">
-        <div class="icon">📞</div><span class="label">PHONE</span><span class="value">404-936-0025</span>
+        <div class="icon" style="font-size: 2rem;">📞</div>
+        <span class="label">PHONE</span><span class="value">404-936-0025</span>
       </a>
     </div>
   </main>
