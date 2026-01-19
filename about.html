@@ -41,6 +41,12 @@
 
     footer { text-align: center; padding: 2rem; background: var(--footer-bg); margin-top: auto; }
   </style>
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
 </head>
 <body>
 
@@ -60,7 +66,7 @@
 <main>
   <section style="margin-bottom: 3rem;">
     <h2>Background</h2>
-    <p>I am a Junior Electrical Engineering student at <strong>Georgia Tech</strong> with a focus on Robotics & Autonomous Systems and Circuit Technology. My goal is to work in Silicon and Hardware Engineering, bridging the gap between digital design and physical implementation[cite: 3, 4].</p>
+    <p>I am a Junior Electrical Engineering student at <strong>Georgia Tech</strong> with a focus on Robotics & Autonomous Systems and Circuit Technology. My goal is to work in Silicon and Hardware Engineering, bridging the gap between digital design and physical implementation.</p>
   </section>
 
   <section>
@@ -70,21 +76,21 @@
       <h3>Promaxo Inc.</h3>
       <span class="role">Robotics Engineering Intern | Oakland, CA</span>
       <span class="date">June 2025 - August 2025</span>
-      <p>Optimized MRI-compatible surgical robotic actuators, improving torque-speed-power efficiency by 15% through Python modeling and parameter sweeps[cite: 16, 21, 22].</p>
+      <p>Optimized MRI-compatible surgical robotic actuators, improving torque-speed-power efficiency by 15% through Python modeling and parameter sweeps.</p>
     </div>
 
     <div class="timeline-item">
       <h3>Electronic Atrium (GT VIP)</h3>
       <span class="role">Undergraduate Researcher | Atlanta, GA</span>
       <span class="date">January 2025 - Present</span>
-      <p>Implemented TCP/IP communication for Arduino nodes and processed 3D depth data from Orbbec Gemini E sensors to enhance spatial awareness[cite: 24, 27, 29].</p>
+      <p>Implemented TCP/IP communication for Arduino nodes and processed 3D depth data from Orbbec Gemini E sensors to enhance spatial awareness.</p>
     </div>
 
     <div class="timeline-item">
       <h3>Georgia Tech IEEE</h3>
       <span class="role">Vice President & Director of Finance</span>
       <span class="date">May 2024 - Present</span>
-      <p>Managed a $50K annual budget and led logistics for the RoboTech hackathon, increasing participation to over 200 students[cite: 62, 64, 65].</p>
+      <p>Managed a $50K annual budget and led logistics for the RoboTech hackathon, increasing participation to over 200 students.</p>
     </div>
   </section>
 
@@ -133,10 +139,6 @@
     document.documentElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
   }
-  (function () {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  })();
 </script>
 </body>
 </html>
