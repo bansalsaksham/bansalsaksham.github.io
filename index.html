@@ -85,6 +85,12 @@
       text-align: center; padding: 2rem; background: var(--footer-bg); margin-top: auto;
     }
   </style>
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
 </head>
 
 <body>
@@ -107,7 +113,7 @@
       <p>Electrical Engineering Student @ Georgia Tech</p>
       <div class="btn-group">
         <a href="projects.html" class="btn">View My Projects</a>
-        <a href="Resume - Saksham Bansal.pdf" class="btn btn-outline">Download Resume</a>
+        <a href="Resume - Saksham Bansal.pdf" class="btn btn-outline" target="_blank">Download Resume</a>
       </div>
     </section>
 
@@ -138,11 +144,6 @@
       document.documentElement.setAttribute("data-theme", newTheme);
       localStorage.setItem("theme", newTheme);
     }
-
-    (function () {
-      const savedTheme = localStorage.getItem("theme") || "light";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    })();
   </script>
 </body>
 </html>
