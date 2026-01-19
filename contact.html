@@ -54,6 +54,12 @@
 
     footer { text-align: center; padding: 2rem; background: var(--footer-bg); margin-top: auto; }
   </style>
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
 </head>
 <body>
 
@@ -116,10 +122,6 @@
     document.documentElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
   }
-  (function () {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  })();
 </script>
 </body>
 </html>
