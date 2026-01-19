@@ -4,21 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saksham Bansal | Initiate. Innovate. Integrate.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Saksham Bansal | Electrical Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* THE "CRAZY" NEON THEME */
     :root {
-      --bg-color: #050505;
-      --card-bg: #101010;
-      --text-color: #e0e0e0;
-      --accent-cyan: #00f3ff;
-      --accent-pink: #bc13fe;
-      --glow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
-      --border-color: #333;
+      /* Professional Engineering Palette */
+      --bg-color: #f8f9fa;
+      --text-color: #343a40;
+      --header-bg: #0b1c2c; /* Deep Navy */
+      --header-text: #ffffff;
+      --accent-blue: #0077b6; /* "Electric" Blue */
+      --accent-teal: #00b4d8;
+      --card-bg: #ffffff;
+      --border-color: #e9ecef;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Fira Code', monospace; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
 
     body { 
       background-color: var(--bg-color); 
@@ -27,169 +28,145 @@
       display: flex; 
       flex-direction: column; 
       min-height: 100vh;
-      /* Subtle grid background for tech feel */
-      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 30px 30px;
+      /* Subtle engineering grid pattern */
+      background-image: radial-gradient(#dee2e6 1px, transparent 1px);
+      background-size: 20px 20px;
     }
 
-    /* Header with Glassmorphism */
+    /* Header: Dark & authoritative */
     header {
-      background: rgba(5, 5, 5, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid var(--border-color);
+      background: var(--header-bg);
+      padding: 1rem 2rem;
       position: sticky; top: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     header h1 { 
-      font-family: 'Orbitron', sans-serif; 
+      font-family: 'Montserrat', sans-serif; 
       font-size: 1.5rem; 
-      font-weight: 900; 
-      color: var(--accent-cyan);
-      text-shadow: var(--glow);
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      font-weight: 800; 
+      color: var(--header-text);
+      letter-spacing: -0.5px;
     }
 
     nav a {
-      margin-left: 1.5rem;
-      color: var(--text-color);
+      margin-left: 2rem;
+      color: #aab2bd; /* Muted gray for unselected */
       text-decoration: none;
       font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      transition: color 0.3s, text-shadow 0.3s;
+      font-size: 0.95rem;
+      transition: color 0.3s;
     }
-    nav a:hover { 
-      color: var(--accent-pink); 
-      text-shadow: 0 0 8px var(--accent-pink);
-    }
+    nav a:hover { color: #ffffff; }
+    nav a.active { color: #ffffff; border-bottom: 2px solid var(--accent-blue); padding-bottom: 4px; }
+
+    /* Main Layout */
+    main { flex: 1; padding: 5rem 2rem; max-width: 1100px; margin: auto; width: 100%; text-align: center; }
 
     /* Hero Section */
-    main { flex: 1; padding: 4rem 2rem; max-width: 1100px; margin: auto; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .hero-tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: var(--header-bg);
+    }
+    
+    /* Coloring the 3 I's */
+    .word-initiate { color: var(--header-bg); } /* Dark */
+    .word-innovate { color: var(--accent-blue); } /* Blue */
+    .word-integrate { color: var(--accent-teal); } /* Teal */
 
-    .hero h2 { 
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.5rem; 
-      margin-bottom: 1rem; 
-      line-height: 1.1; 
-      background: -webkit-linear-gradient(0deg, var(--accent-cyan), var(--accent-pink));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: pulse 3s infinite;
+    .hero-sub {
+      font-size: 1.25rem;
+      color: #6c757d;
+      max-width: 700px;
+      margin: 0 auto 3rem auto;
     }
 
-    .hero p { 
-      font-size: 1.2rem; 
-      color: #aaa; 
-      max-width: 700px; 
-      margin: 0 auto 2.5rem auto; 
-      border-left: 3px solid var(--accent-pink);
-      padding-left: 1.5rem;
-      text-align: left;
-    }
-
-    .btn-group { display: flex; gap: 1.5rem; justify-content: center; }
+    /* Buttons: Clean & Flat */
+    .btn-group { display: flex; gap: 1rem; justify-content: center; }
     
     .btn {
-      padding: 0.8rem 2rem; 
-      border-radius: 4px; 
-      text-decoration: none; 
-      font-weight: 700;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
+      padding: 0.8rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
     
-    /* Crazy Button Effects */
-    .btn-primary { 
-      background: transparent; 
-      border: 2px solid var(--accent-cyan); 
-      color: var(--accent-cyan); 
-      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+    .btn-primary {
+      background: var(--header-bg);
+      color: white;
     }
-    .btn-primary:hover { 
-      background: var(--accent-cyan); 
-      color: #000; 
-      box-shadow: 0 0 20px var(--accent-cyan);
+    .btn-primary:hover {
+      background: var(--accent-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 119, 182, 0.3);
     }
 
-    .btn-secondary { 
-      background: transparent; 
-      border: 2px solid var(--accent-pink); 
-      color: var(--accent-pink); 
+    .btn-outline {
+      background: white;
+      border: 2px solid var(--header-bg);
+      color: var(--header-bg);
     }
-    .btn-secondary:hover { 
-      background: var(--accent-pink); 
-      color: #000; 
-      box-shadow: 0 0 20px var(--accent-pink);
+    .btn-outline:hover {
+      background: var(--bg-color);
+      transform: translateY(-2px);
     }
 
-    /* Cards */
+    /* Feature Grid */
     .grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 5rem; width: 100%;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 5rem;
+      text-align: left;
     }
+    
     .card {
-      background: rgba(16, 16, 16, 0.8);
-      padding: 2rem; 
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
       border: 1px solid var(--border-color);
-      border-radius: 0; 
-      position: relative;
-      transition: transform 0.3s, border-color 0.3s;
+      transition: all 0.3s ease;
+      position: relative; overflow: hidden;
     }
-    .card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink));
-      opacity: 0; transition: opacity 0.3s;
+    
+    /* Engineering Accent Bar on Cards */
+    .card::top {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+      background: var(--header-bg);
     }
-    .card:hover { 
-      transform: translateY(-5px); 
-      border-color: var(--text-color);
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-color: var(--accent-blue);
     }
-    .card:hover::before { opacity: 1; }
 
-    .card h3 { 
-      margin-bottom: 0.5rem; 
-      color: var(--accent-cyan); 
-      font-family: 'Orbitron', sans-serif; 
+    .card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      color: var(--header-bg);
+      margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.5rem;
     }
 
     footer {
-      text-align: center; 
-      padding: 2rem; 
-      border-top: 1px solid var(--border-color);
-      font-size: 0.8rem;
-      color: #555;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    /* Simple Pulse Animation */
-    @keyframes pulse {
-      0% { text-shadow: 0 0 10px rgba(0,243,255,0.2); }
-      50% { text-shadow: 0 0 20px rgba(188,19,254,0.6); }
-      100% { text-shadow: 0 0 10px rgba(0,243,255,0.2); }
-    }
-
-    /* Mobile Tweaks */
-    @media (max-width: 600px) {
-      .hero h2 { font-size: 2rem; }
-      .btn-group { flex-direction: column; }
+      text-align: center;
+      padding: 2rem;
+      background: var(--header-bg);
+      color: #888;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Saksham.Bansal</h1>
+    <h1>Saksham Bansal</h1>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
@@ -197,33 +174,36 @@
   </header>
 
   <main>
-    <section class="hero">
-      <h2>INITIATE.<br>INNOVATE.<br>INTEGRATE.</h2>
+    <section>
+      <h2 class="hero-tagline">
+        <span class="word-initiate">INITIATE.</span><br>
+        <span class="word-innovate">INNOVATE.</span><br>
+        <span class="word-integrate">INTEGRATE.</span>
+      </h2>
       
-      <p>
-        The power of these three I’s have always been the basis of every achievement and purpose in my life.
-        <br><br>
-        <span style="color: var(--accent-cyan)">// Electrical Engineering Student @ Georgia Tech</span>
+      <p class="hero-sub">
+        The power of these three principles drives every purpose in my life.<br>
+        <strong>Electrical Engineering Student @ Georgia Tech</strong>
       </p>
 
       <div class="btn-group">
-        <a href="projects.html" class="btn btn-primary">Initialize Projects</a>
-        <a href="Resume - Saksham Bansal.pdf" class="btn btn-secondary" target="_blank">Download_Resume.pdf</a>
+        <a href="projects.html" class="btn btn-primary">View Engineering Portfolio</a>
+        <a href="Resume - Saksham Bansal.pdf" class="btn btn-outline" target="_blank">Download Resume</a>
       </div>
     </section>
 
     <section class="grid">
-      <div class="card">
+      <div class="card" style="border-top: 4px solid var(--header-bg);">
         <h3>PCB Design</h3>
-        <p>Architecting complex boards using Altium & KiCad. From schematic capture to fabrication.</p>
+        <p>Experience designing complex boards using Altium & KiCad, taking projects from schematic capture to fabrication.</p>
       </div>
-      <div class="card">
+      <div class="card" style="border-top: 4px solid var(--accent-blue);">
         <h3>Embedded Systems</h3>
-        <p>Programming STM32, Arduino, & ESP32. Bridging the gap between code and reality.</p>
+        <p>Programming microcontrollers (STM32, Arduino, ESP32) for real-world robotics and sensing applications.</p>
       </div>
-      <div class="card">
+      <div class="card" style="border-top: 4px solid var(--accent-teal);">
         <h3>Leadership</h3>
-        <p>VP of IEEE GT & Autodesk Ambassador. Driving innovation through community.</p>
+        <p>Driving innovation as VP of IEEE GT and facilitating technical growth as an Autodesk Campus Ambassador.</p>
       </div>
     </section>
   </main>
