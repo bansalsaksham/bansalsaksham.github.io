@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certifications | Saksham Bansal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* --- SHARED THEME CSS (Matches Index/Projects) --- */
+    :root {
+      --bg-color: #f0f4f8; --text-color: #2d3436;
+      --glass-bg: rgba(255, 255, 255, 0.65); --glass-border: rgba(255, 255, 255, 0.8);
+      --accent-primary: #0984e3; --accent-secondary: #00cec9;
+      --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    }
+    [data-theme="dark"] {
+      --bg-color: #0f111a; --text-color: #dfe6e9;
+      --glass-bg: rgba(22, 27, 34, 0.6); --glass-border: rgba(255, 255, 255, 0.1);
+      --accent-primary: #74b9ff; --accent-secondary: #81ecec;
+      --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
+    body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; background-image: radial-gradient(var(--text-color) 0.5px, transparent 0.5px); background-size: 25px 25px; opacity: 0.98; }
+    
+    header {
+      background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.2rem; letter-spacing: -0.5px; text-decoration: none; color: var(--text-color); }
+    .brand:hover { color: var(--accent-primary); }
+    
+    .controls { display: flex; align-items: center; gap: 1.5rem; }
+    nav { display: flex; gap: 1.5rem; }
+    nav a { text-decoration: none; color: var(--text-color); font-weight: 600; font-size: 0.9rem; position: relative; font-family: 'Montserrat', sans-serif; }
+    nav a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: var(--accent-primary); transition: width 0.3s; }
+    nav a:hover::after { width: 100%; }
+    
+    .toggle-btn { background: none; border: 2px solid var(--glass-border); border-radius: 50%; cursor: pointer; font-size: 1.2rem; padding: 0.4rem; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
+    .toggle-btn:hover { transform: scale(1.1); background: var(--glass-border); }
+    
+    main { flex: 1; padding: 4rem 2rem; max-width: 1200px; margin: auto; width: 100%; }
+    footer { text-align: center; padding: 3rem; font-size: 0.9rem; opacity: 0.7; font-weight: 600; }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; padding: 1rem; gap: 0.5rem; }
+      .brand { width: 100%; text-align: center; font-size: 1.4rem; margin-bottom: 0.5rem; }
+      .controls { width: 100%; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+      nav { gap: 1rem; }
+      nav a { font-size: 0.85rem; }
+      .cert-grid { grid-template-columns: 1fr; }
+    }
+    
+    /* --- CERTIFICATION SPECIFIC CSS --- */
+    h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-color); border-left: 5px solid var(--accent-primary); padding-left: 1.5rem; }
+
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    
+    .cert-card {
+      background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; 
+      box-shadow: var(--shadow); overflow: hidden; transition: transform 0.3s, border-color 0.3s;
+      display: flex; flex-direction: column;
+    }
+    .cert-card:hover { transform: translateY(-5px); border-color: var(--accent-primary); }
+    
+    /* Image Placeholder Area */
+    .cert-image {
+      width: 100%; height: 180px; 
+      background-color: rgba(0,0,0,0.05); /* Gray background if image is missing */
+      object-fit: cover; border-bottom: 1px solid var(--glass-border);
+    }
+    
+    .cert-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+    
+    .cert-issuer { 
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; 
+      color: var(--accent-secondary); margin-bottom: 0.5rem; 
+    }
+    
+    .cert-title { 
+      font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 800; 
+      color: var(--text-color); margin-bottom: 0.5rem; line-height: 1.3;
+    }
+    
+    .cert-meta { font-size: 0.85rem; opacity: 0.7; margin-bottom: 1rem; }
+    
+    .skills-row { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-pill { 
+      font-size: 0.75rem; background: rgba(9, 132, 227, 0.1); color: var(--accent-primary); 
+      padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; 
+    }
+
+  </style>
+  <script>
+    (function() { const savedTheme = localStorage.getItem("theme") || "light"; document.documentElement.setAttribute("data-theme", savedTheme); })();
+  </script>
+</head>
+<body>
+  <audio id="bg-audio" loop><source src="bg-sound.mp3" type="audio/mpeg"></audio>
+  <header>
+    <a href="index.html" class="brand">Saksham Bansal</a>
+    <div class="controls">
+      <nav>
+        <a href="about.html">ABOUT</a>
+        <a href="projects.html">PROJECTS</a>
+        <a href="certifications.html">CERTS</a> <a href="contact.html">CONTACT</a>
+      </nav>
+      <button class="toggle-btn" onclick="toggleTheme()"><span id="theme-icon">☀️</span></button>
+      <!-- <button class="toggle-btn" onclick="toggleSound()"><span id="sound-icon">🔇</span></button> -->
+    </div>
+  </header>
+
+  <main>
+    <h2>Certifications</h2>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <img src="images/altium.jpg" alt="Altium Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">Altium®</span>
+          <h3 class="cert-title">PCB Basic Design</h3>
+          <div class="cert-meta">Issued Jan 2026 • ID: cert_xcs8q3lc</div>
+          <div class="skills-row">
+            <span class="skill-pill">Altium Designer</span>
+            <span class="skill-pill">Schematic Capture</span>
+            <span class="skill-pill">PCB Layout</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/python_gt.jpg" alt="Georgia Tech Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">Georgia Tech</span>
+          <h3 class="cert-title">Introduction to Computing using Python</h3>
+          <div class="cert-meta">Issued Oct 2023 • ID: 342d0da...</div>
+          <div class="skills-row">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">Algorithms</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/electronics_gt.jpg" alt="Electronics Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">Georgia Tech</span>
+          <h3 class="cert-title">Introduction to Electronics</h3>
+          <div class="cert-meta">Issued Jul 2023</div>
+          <div class="skills-row">
+            <span class="skill-pill">Circuits</span>
+            <span class="skill-pill">Components</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/stanford_iot.jpg" alt="Stanford Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">Stanford University</span>
+          <h3 class="cert-title">Introduction to Internet of Things</h3>
+          <div class="cert-meta">ID: XEE100-018</div>
+          <div class="skills-row">
+            <span class="skill-pill">IoT</span>
+            <span class="skill-pill">Sensors</span>
+            <span class="skill-pill">Networking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/isro_space.jpg" alt="ISRO Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">ISRO / IIRS</span>
+          <h3 class="cert-title">Space Science and Technology</h3>
+          <div class="cert-meta">Issued Jul 2022 • ID: IIRS20227158958</div>
+          <div class="skills-row">
+            <span class="skill-pill">Space Tech</span>
+            <span class="skill-pill">Remote Sensing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/ibm_ai.jpg" alt="IBM AI Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">IBM</span>
+          <h3 class="cert-title">AI for Everyone: Master the Basics</h3>
+          <div class="cert-meta">ID: IBM AI0101EN</div>
+          <div class="skills-row">
+            <span class="skill-pill">Artificial Intelligence</span>
+            <span class="skill-pill">Machine Learning</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/ibm_rpa.jpg" alt="IBM RPA Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">IBM</span>
+          <h3 class="cert-title">Robotics Process Automation</h3>
+          <div class="cert-meta">Issued Nov 2021</div>
+          <div class="skills-row">
+            <span class="skill-pill">RPA</span>
+            <span class="skill-pill">Automation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/elemento.jpg" alt="Elemento Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">Elemento Labs</span>
+          <h3 class="cert-title">Robotics & Software Course</h3>
+          <div class="cert-meta">ID: EE 1R</div>
+          <div class="skills-row">
+            <span class="skill-pill">Arduino</span>
+            <span class="skill-pill">EV3</span>
+            <span class="skill-pill">Lego Mindstorms</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/isro_gis.jpg" alt="ISRO GIS Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">ISRO / IIRS</span>
+          <h3 class="cert-title">Remote Sensing & GIS</h3>
+          <div class="cert-meta">Issued Jul 2021 • ID: IIRS2021...</div>
+          <div class="skills-row">
+            <span class="skill-pill">GIS</span>
+            <span class="skill-pill">Environmental Studies</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/google_marketing.jpg" alt="Google Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">Google</span>
+          <h3 class="cert-title">The Fundamentals of Digital Marketing</h3>
+          <div class="cert-meta">ID: ZH8 7UK PCM</div>
+          <div class="skills-row">
+            <span class="skill-pill">Digital Marketing</span>
+            <span class="skill-pill">SEO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/michigan.jpg" alt="Michigan Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">University of Michigan</span>
+          <h3 class="cert-title">Successful Negotiation</h3>
+          <div class="cert-meta">Issued May 2023</div>
+          <div class="skills-row">
+            <span class="skill-pill">Strategy</span>
+            <span class="skill-pill">Leadership</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <img src="images/microsoft.jpg" alt="Microsoft Certificate" class="cert-image">
+        <div class="cert-content">
+          <span class="cert-issuer">Microsoft</span>
+          <h3 class="cert-title">Digital Literacy</h3>
+          <div class="cert-meta">Issued Mar 2021 • ID: 172203...</div>
+          <div class="skills-row">
+            <span class="skill-pill">Computer Basics</span>
+            <span class="skill-pill">Productivity</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  
+  <footer>&copy; 2026 Saksham Bansal</footer>
+
+  <script>
+    function toggleTheme() { const html = document.documentElement; const icon = document.getElementById('theme-icon'); const current = html.getAttribute("data-theme"); if (current === "dark") { html.setAttribute("data-theme", "light"); localStorage.setItem("theme", "light"); icon.textContent = "☀️"; } else { html.setAttribute("data-theme", "dark"); localStorage.setItem("theme", "dark"); icon.textContent = "🌙"; } }
+    document.addEventListener("DOMContentLoaded", () => { const current = localStorage.getItem("theme") || "light"; document.getElementById('theme-icon').textContent = current === "dark" ? "🌙" : "☀️"; });
+    // function toggleSound() { const audio = document.getElementById('bg-audio'); const icon = document.getElementById('sound-icon'); if (audio.paused) { audio.play().catch(e => alert("Interact with page first.")); icon.textContent = "🔊"; } else { audio.pause(); icon.textContent = "🔇"; } }
+  </script>
+</body>
+</html>
