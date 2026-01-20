@@ -69,6 +69,7 @@
     @keyframes fadeIn { to { opacity: 1; } }
     /* Mobile Layout: Line 1 Name, Line 2 Nav & Toggles */
     @media (max-width: 768px) {
+      
       header {
         flex-direction: column;
         padding: 1rem;
@@ -109,6 +110,10 @@
       .grid, .project-grid, .contact-grid, .skills-grid { 
         grid-template-columns: 1fr; 
       }
+    
+      nav { gap: 0.8rem; } /* Reduce gap slightly */
+      nav a { font-size: 0.75rem; } /* Smaller text to fit "CERTIFICATIONS" */
+    }
     }
   </style>
   <script>
