@@ -51,6 +51,8 @@
       .cert-grid { grid-template-columns: 1fr; }
     }
     
+      nav { gap: 0.8rem; } /* Reduce gap slightly */
+      nav a { font-size: 0.75rem; } /* Smaller text to fit "CERTIFICATIONS" */
     /* --- CERTIFICATION SPECIFIC CSS --- */
     h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 2rem; color: var(--text-color); border-left: 5px solid var(--accent-primary); padding-left: 1.5rem; }
 
@@ -103,7 +105,8 @@
       <nav>
         <a href="about.html">ABOUT</a>
         <a href="projects.html">PROJECTS</a>
-        <a href="certifications.html">CERTS</a> <a href="contact.html">CONTACT</a>
+        <a href="certifications.html">CERTIFICATIONS</a> 
+        <a href="contact.html">CONTACT</a>
       </nav>
       <button class="toggle-btn" onclick="toggleTheme()"><span id="theme-icon">☀️</span></button>
       <!-- <button class="toggle-btn" onclick="toggleSound()"><span id="sound-icon">🔇</span></button> -->
