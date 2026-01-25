@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Saksham Bansal</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    /* Shared Theme CSS */
+    /* SHARED THEME CSS */
     :root {
       --bg-color: #f0f4f8; --text-color: #2d3436;
       --glass-bg: rgba(255, 255, 255, 0.65); --glass-border: rgba(255, 255, 255, 0.8);
@@ -21,8 +21,13 @@
     }
     * { margin: 0; padding: 0; box-sizing: border-box; transition: background-color 0.3s, color 0.3s; }
     body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; background-image: radial-gradient(var(--text-color) 0.5px, transparent 0.5px); background-size: 25px 25px; opacity: 0.98; }
-    header { background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--glass-border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
-    .brand { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.2rem; letter-spacing: -0.5px; text-decoration: none; color: var(--text-color); cursor: pointer; }
+    
+    header {
+      background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.2rem; letter-spacing: -0.5px; text-decoration: none; color: var(--text-color); }
     .brand:hover { color: var(--accent-primary); }
     .controls { display: flex; align-items: center; gap: 1.5rem; }
     nav a { text-decoration: none; color: var(--text-color); font-weight: 600; font-size: 0.9rem; position: relative; font-family: 'Montserrat', sans-serif; }
@@ -30,112 +35,85 @@
     nav a:hover::after { width: 100%; }
     .toggle-btn { background: none; border: 2px solid var(--glass-border); border-radius: 50%; cursor: pointer; font-size: 1.2rem; padding: 0.4rem; display: flex; align-items: center; justify-content: center; transition: transform 0.2s; }
     .toggle-btn:hover { transform: scale(1.1); background: var(--glass-border); }
+    
     main { flex: 1; padding: 4rem 2rem; max-width: 800px; margin: auto; width: 100%; text-align: center; }
     footer { text-align: center; padding: 3rem; font-size: 0.9rem; opacity: 0.7; font-weight: 600; }
+
+    /* MOBILE LAYOUT */
+    @media (max-width: 768px) {
+      header { flex-direction: column; padding: 1rem; gap: 0.8rem; }
+      .brand { width: 100%; text-align: center; font-size: 1.3rem; margin-bottom: 0.2rem; }
+      .controls { width: 100%; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+      .controls nav { display: flex; gap: 0.8rem; }
+      .toggle-btn { font-size: 1.1rem; padding: 0.3rem; }
+      nav a { font-size: 0.75rem; }
+    }
 
     /* Contact Specifics */
     .intro h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-color); font-weight: 800; }
     .intro p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 3rem; }
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .contact-card { background: var(--glass-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--glass-border); text-decoration: none; color: var(--text-color); transition: all 0.3s; display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; box-shadow: var(--shadow); }
-    .contact-card:hover { border-color: var(--accent-primary); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(9, 132, 227, 0.15); }
-    .icon { font-size: 2rem; margin-bottom: 1rem; }
+    
+    .contact-card { 
+      background: var(--glass-bg); padding: 2rem; border-radius: 12px; border: 1px solid var(--glass-border); 
+      text-decoration: none; color: var(--text-color); transition: all 0.3s; 
+      display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; box-shadow: var(--shadow); 
+    }
+    .contact-card:hover { 
+      border-color: var(--accent-primary); transform: translateY(-5px); 
+      box-shadow: 0 10px 30px rgba(9, 132, 227, 0.15); color: var(--accent-primary);
+    }
+    
+    .icon { margin-bottom: 1rem; display: flex; justify-content: center; align-items: center; width: 40px; height: 40px; color: var(--text-color); transition: color 0.3s; }
+    .icon svg { fill: currentColor; width: 32px; height: 32px; display: block; }
+    .contact-card:hover .icon { color: var(--accent-primary); }
+    
     .label { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; font-family: 'Montserrat', sans-serif; }
     .value { color: var(--accent-primary); font-size: 0.9rem; }
-    /* Mobile Layout: Line 1 Name, Line 2 Nav & Toggles */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        padding: 1rem;
-        gap: 0.8rem;
-      }
-      nav { gap: 0.8rem; } /* Reduce gap slightly */
-      nav a { font-size: 0.75rem; } /* Smaller text to fit "CERTIFICATIONS" */
-    
-      /* Line 1: Name (Centered) */
-      .brand {
-        width: 100%;
-        text-align: center;
-        font-size: 1.3rem;
-        margin-bottom: 0.2rem;
-      }
-
-      /* Line 2: Nav Links + Toggles together */
-      .controls {
-        width: 100%;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap; /* Allows wrapping on very small screens */
-      }
-
-      /* Make sure Nav is visible */
-      .controls nav {
-        display: flex;
-        gap: 1rem;
-      }
-
-      /* Toggles adjustment */
-      .toggle-btn {
-        font-size: 1.1rem;
-        padding: 0.3rem;
-      }
-
-      /* General Mobile Font Sizes */
-      .hero-title { font-size: 2.5rem; }
-      h2 { font-size: 2rem; }
-      .grid, .project-grid, .contact-grid, .skills-grid { 
-        grid-template-columns: 1fr; 
-      }
-    }
   </style>
   <script>
     (function() { const savedTheme = localStorage.getItem("theme") || "light"; document.documentElement.setAttribute("data-theme", savedTheme); })();
   </script>
 </head>
 <body>
-  <audio id="bg-audio" loop><source src="bg-sound.mp3" type="audio/mpeg"></audio>
   <header>
     <a href="index.html" class="brand">Saksham Bansal</a>
     <div class="controls">
       <nav>
         <a href="about.html">ABOUT</a>
         <a href="projects.html">PROJECTS</a>
-        <a href="certifications.html">CERTIFICATIONS</a> 
+        <a href="certifications.html">CERTIFICATIONS</a>
         <a href="contact.html">CONTACT</a>
       </nav>
-      <button class="toggle-btn" onclick="toggleTheme()"><span id="theme-icon">☀️</span></button>
-      <!-- <button class="toggle-btn" onclick="toggleSound()"><span id="sound-icon">🔇</span></button> -->
+      <button class="toggle-btn" onclick="toggleTheme()" title="Toggle Theme"><span id="theme-icon">☀️</span></button>
     </div>
   </header>
   <main>
     <section class="intro">
       <h2>Let's Connect</h2>
-      <p>Actively seeking Summer 2026 Internship in Silicon & Hardware Engineering.<br>Based in Atlanta, GA. Open to Relocation.</p>
+      <p>Actively seeking Summer 2026 Internship in Silicon & Hardware Engineering.<br>Based in Atlanta, GA.</p>
     </section>
     <div class="contact-grid">
       <a href="mailto:sakshambansal@gatech.edu" class="contact-card">
         <div class="icon" style="font-size: 2rem;">📧</div>
         <span class="label">EMAIL</span><span class="value">sakshambansal@gatech.edu</span>
       </a>
-
       <a href="https://linkedin.com/in/bansalsaksham" target="_blank" class="contact-card">
-        <div class="icon" style="display: flex; justify-content: center;">
-  <svg height="32" viewBox="0 0 24 24" width="32" style="fill: var(--text-color);">
-    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
-  </svg>
-</div>
-<span class="label">LINKEDIN</span> <span class="value">in/bansalsaksham</span>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </div>
+        <span class="label">LINKEDIN</span><span class="value">in/bansalsaksham</span>
       </a>
-
       <a href="https://github.com/bansalsaksham" target="_blank" class="contact-card">
-        <div class="icon" style="display: flex; justify-content: center;">
-  <svg height="32" viewBox="0 0 16 16" width="32" style="fill: var(--text-color);">
-    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-  </svg>
-</div>
-<span class="label">GITHUB</span> <span class="value">github.com/bansalsaksham</span>
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16" fill="currentColor">
+             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
+        </div>
+        <span class="label">GITHUB</span><span class="value">github.com/bansalsaksham</span>
       </a>
-      
       <a href="tel:+14049360025" class="contact-card">
         <div class="icon" style="font-size: 2rem;">📞</div>
         <span class="label">PHONE</span><span class="value">404-936-0025</span>
@@ -146,7 +124,6 @@
   <script>
     function toggleTheme() { const html = document.documentElement; const icon = document.getElementById('theme-icon'); const current = html.getAttribute("data-theme"); if (current === "dark") { html.setAttribute("data-theme", "light"); localStorage.setItem("theme", "light"); icon.textContent = "☀️"; } else { html.setAttribute("data-theme", "dark"); localStorage.setItem("theme", "dark"); icon.textContent = "🌙"; } }
     document.addEventListener("DOMContentLoaded", () => { const current = localStorage.getItem("theme") || "light"; document.getElementById('theme-icon').textContent = current === "dark" ? "🌙" : "☀️"; });
-    // function toggleSound() { const audio = document.getElementById('bg-audio'); const icon = document.getElementById('sound-icon'); if (audio.paused) { audio.play().catch(e => alert("Interact with page first.")); icon.textContent = "🔊"; } else { audio.pause(); icon.textContent = "🔇"; } }
   </script>
 </body>
 </html>
