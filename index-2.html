@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Saksham Bansal: EE Senior at Georgia Tech. Embedded systems, robotics, and IoT hardware." />
+  <title>Saksham Bansal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#F7F6F2;--surface:#EEECEA;--ink:#141414;--ink2:#6B6B6B;--ink3:#ABABAB;--accent:#C17D3C;--border:#D8D6D0;--card-bg:#FFFFFF;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;}
+    [data-theme="dark"]{--bg:#0E0E0E;--surface:#1A1A18;--ink:#E8E6DF;--ink2:#8A8880;--ink3:#4A4A48;--accent:#D4904E;--border:#2A2A28;--card-bg:#161614;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;transition:background .25s,color .25s;min-height:100vh;}
+    body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(var(--ink3) 0.6px,transparent 0.6px);background-size:28px 28px;opacity:.35;pointer-events:none;z-index:0;}
+    header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:56px;background:var(--bg);border-bottom:1px solid var(--border);}
+    .brand{font-family:var(--mono);font-weight:700;font-size:.85rem;letter-spacing:.04em;color:var(--ink);text-decoration:none;}
+    .brand:hover{color:var(--accent);}
+    nav{display:flex;align-items:center;gap:2rem;}
+    nav a{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .15s;}
+    nav a:hover,nav a.active{color:var(--accent);}
+    .theme-btn{background:none;border:1px solid var(--border);border-radius:4px;color:var(--ink2);cursor:pointer;font-family:var(--mono);font-size:.7rem;padding:4px 8px;letter-spacing:.04em;transition:border-color .15s,color .15s;}
+    .theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+    main{position:relative;z-index:1;}
+    footer{position:relative;z-index:1;padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);}
+    .footer-copy{font-family:var(--mono);font-size:.68rem;color:var(--ink3);letter-spacing:.04em;}
+    .footer-links{display:flex;gap:1.5rem;}
+    .footer-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .15s;}
+    .footer-links a:hover{color:var(--accent);}
+    .hero{display:grid;grid-template-columns:1fr 280px;min-height:calc(100vh - 56px);border-bottom:1px solid var(--border);}
+    .hero-left{padding:5rem 3rem 4rem;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border);}
+    .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;}
+    h1{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:600;line-height:1.08;letter-spacing:-.02em;color:var(--ink);margin-bottom:1.5rem;max-width:580px;}
+    h1 em{font-style:normal;color:var(--accent);}
+    .terminal-line{display:flex;align-items:center;gap:.5rem;margin-bottom:2rem;}
+    .terminal-prompt{font-family:var(--mono);font-size:.78rem;color:var(--accent);user-select:none;flex-shrink:0;}
+    .terminal-text{font-family:var(--mono);font-size:.78rem;color:var(--ink2);min-height:1.2em;}
+    .cursor{display:inline-block;width:7px;height:.85em;background:var(--accent);vertical-align:middle;animation:blink 1s step-end infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .hero-desc{font-size:.95rem;color:var(--ink2);max-width:480px;line-height:1.8;margin-bottom:2.5rem;}
+    .cta-row{display:flex;gap:.75rem;flex-wrap:wrap;}
+    .btn-primary{font-family:var(--mono);font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bg);background:var(--ink);border:1px solid var(--ink);padding:.65rem 1.4rem;text-decoration:none;border-radius:3px;transition:background .15s,border-color .15s;}
+    .btn-primary:hover{background:var(--accent);border-color:var(--accent);}
+    .btn-ghost{font-family:var(--mono);font-size:.75rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);background:transparent;border:1px solid var(--border);padding:.65rem 1.4rem;text-decoration:none;border-radius:3px;transition:border-color .15s,color .15s;}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+    .hero-right{padding:5rem 2.5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+    .stat-block{padding:2rem 0;border-bottom:1px solid var(--border);}
+    .stat-block:first-child{padding-top:0;}
+    .stat-block:last-child{border-bottom:none;}
+    .stat-number{font-family:var(--mono);font-size:2.2rem;font-weight:700;color:var(--ink);line-height:1;margin-bottom:.4rem;}
+    .stat-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);line-height:1.5;}
+    .stat-sub{font-size:.78rem;color:var(--ink3);margin-top:.25rem;}
+    .section{padding:4rem 3rem;}
+    .section-header{display:flex;align-items:center;gap:1rem;margin-bottom:2rem;}
+    .section-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);white-space:nowrap;}
+    .section-rule{flex:1;height:1px;background:var(--border);}
+    .section-link{font-family:var(--mono);font-size:.68rem;color:var(--ink2);text-decoration:none;letter-spacing:.06em;white-space:nowrap;transition:color .15s;}
+    .section-link:hover{color:var(--accent);}
+    .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+    .work-card{background:var(--card-bg);padding:2rem 2rem 2rem 2.25rem;border-left:3px solid transparent;transition:border-color .2s;text-decoration:none;color:inherit;display:flex;flex-direction:column;}
+    .work-card:hover{border-left-color:var(--accent);}
+    .card-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;}
+    .card-title{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.01em;}
+    .card-desc{font-size:.84rem;color:var(--ink2);line-height:1.75;flex:1;}
+    .card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1.25rem;flex-wrap:wrap;gap:.5rem;}
+    .card-stack{font-family:var(--mono);font-size:.6rem;color:var(--ink3);letter-spacing:.04em;}
+    .card-award{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:2px 6px;border-radius:2px;display:inline-block;margin-top:.6rem;align-self:flex-start;}
+    .about-strip{padding:4rem 3rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:4rem;background:var(--surface);}
+    .about-left h2{font-size:1.4rem;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:1rem;line-height:1.3;}
+    .about-left p{font-size:.9rem;color:var(--ink2);line-height:1.8;margin-bottom:.75rem;}
+    .about-left p:last-child{margin-bottom:0;}
+    .timeline{display:flex;flex-direction:column;}
+    .timeline-item{display:grid;grid-template-columns:80px 1fr;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--border);}
+    .timeline-item:last-child{border-bottom:none;}
+    .timeline-year{font-family:var(--mono);font-size:.68rem;color:var(--ink3);letter-spacing:.04em;padding-top:2px;}
+    .timeline-text{font-size:.85rem;color:var(--ink);line-height:1.5;}
+    .timeline-text strong{font-weight:600;}
+    .timeline-text span{color:var(--ink2);font-size:.8rem;}
+    @media(max-width:900px){
+      header{padding:0 1.5rem;}nav{gap:1.2rem;}
+      .hero{grid-template-columns:1fr;min-height:auto;}
+      .hero-left{padding:3rem 1.5rem 2rem;border-right:none;border-bottom:1px solid var(--border);}
+      .hero-right{padding:2rem 1.5rem;flex-direction:row;flex-wrap:wrap;}
+      .stat-block{flex:1;min-width:140px;padding:1rem 0;border-bottom:none;border-right:1px solid var(--border);}
+      .stat-block:last-child{border-right:none;}
+      .section{padding:2.5rem 1.5rem;}
+      .work-grid{grid-template-columns:1fr;}
+      .about-strip{grid-template-columns:1fr;gap:2rem;padding:2.5rem 1.5rem;}
+      footer{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center;}
+    }
+    @media(prefers-reduced-motion:reduce){.cursor{animation:none;opacity:1;}}
+  </style>
+  <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">SB_</a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="theme-btn" onclick="toggleTheme()" id="theme-btn">[ light ]</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">EE Senior · Georgia Tech · Atlanta, GA</p>
+        <h1>Saksham Bansal.<br>I build hardware for <em>the real world.</em></h1>
+        <div class="terminal-line">
+          <span class="terminal-prompt">~/saksham $</span>
+          <span class="terminal-text" id="typewriter"></span><span class="cursor"></span>
+        </div>
+        <p class="hero-desc">By 13, I already had an Arduino and too many ideas. A decade later the ideas are more specific: embedded systems, robotics, and IoT hardware that has to work in a field, on a factory floor, or in a disaster zone. Founder of Stayive. President of IEEE Georgia Tech.</p>
+        <div class="cta-row">
+          <a href="projects.html" class="btn-primary">See the work</a>
+          <a href="resume-saksham-bansal.pdf" class="btn-ghost" target="_blank" rel="noopener noreferrer">Download resume</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stat-block">
+          <div class="stat-number">$1K</div>
+          <div class="stat-label">ECE Innovate<br>Best in Thread</div>
+          <div class="stat-sub">A.R.I.S. rover · 2026</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">#2</div>
+          <div class="stat-label">Worldwide<br>UPenn EcoVenture</div>
+          <div class="stat-sub">Rootry irrigation · 2024</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">96K</div>
+          <div class="stat-label">Litres saved/month<br>Dripmise install</div>
+          <div class="stat-sub">Timber Taste · India</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">700+</div>
+          <div class="stat-label">Students on mailing list<br>IEEE Georgia Tech</div>
+          <div class="stat-sub">President · $50K budget</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-label">Selected work</span>
+        <div class="section-rule"></div>
+        <a href="projects.html" class="section-link">All projects →</a>
+      </div>
+      <div class="work-grid">
+
+        <a href="https://github.com/bansalsaksham/Rootry" target="_blank" rel="noopener noreferrer" class="work-card">
+          <div class="card-tag">IoT Hardware · 2019 – Present</div>
+          <div class="card-title">Rootry: Smart Irrigation for Smallholder Farms</div>
+          <div class="card-desc">My longest-running project. What started as a school science fair entry now keeps a real farm watered without anyone checking on it. Runner-up worldwide at UPenn EcoVenture 2024.</div>
+          <div class="card-award">🌍 Runner-up Worldwide · UPenn EcoVenture 2024</div>
+          <div class="card-footer"><span class="card-stack">ESP32-S3 · KiCad · GSM SIM800L · DHT22</span></div>
+        </a>
+
+        <a href="https://github.com/bansalsaksham/ARIS" target="_blank" rel="noopener noreferrer" class="work-card">
+          <div class="card-tag">Robotics · ECE Innovate 2026</div>
+          <div class="card-title">A.R.I.S.: Autonomous Rescue and Inspection System</div>
+          <div class="card-desc">A rover built to scout dangerous spaces before a person has to walk in. It senses, decides, and reports back on its own. Took first place in its thread at ECE Innovate.</div>
+          <div class="card-award">🏆 Best in Thread · $1,000 · ECE Innovate 2026</div>
+          <div class="card-footer"><span class="card-stack">ESP32 · C++ · ESPAsyncWebServer · MPU6050 · MQ-6</span></div>
+        </a>
+
+        <a href="https://github.com/bansalsaksham/PressLog" target="_blank" rel="noopener noreferrer" class="work-card">
+          <div class="card-tag">PCB Design · Industrial IoT</div>
+          <div class="card-title">PressLog: Industrial IoT OEE Downtime Logger</div>
+          <div class="card-desc">A factory doesn't care if your circuit looks good on a breadboard. This one had to survive motor noise, dust, and a worker who just wants to press a button and move on.</div>
+          <div class="card-footer"><span class="card-stack">ESP32-S3 · KiCad · LittleFS · DS3231 · PN532</span></div>
+        </a>
+
+        <a href="https://github.com/bansalsaksham/RTL-to-GDSII-64-bit-Calculator" target="_blank" rel="noopener noreferrer" class="work-card">
+          <div class="card-tag">Digital Design · VLSI</div>
+          <div class="card-title">RTL-to-GDSII 64-bit Calculator</div>
+          <div class="card-desc">My first real exposure to the silicon side of EE. I went from not knowing what DD or DV stood for to taking a design through the entire chain to layout, on my own.</div>
+          <div class="card-footer"><span class="card-stack">SystemVerilog · Cadence Xcelium · Innovus · Genus · Tempus</span></div>
+        </a>
+
+      </div>
+    </section>
+
+    <div class="about-strip">
+      <div class="about-left">
+        <h2>Building things is a way of thinking, not just a skill.</h2>
+        <p>I'd rather find out something doesn't work by building it than by reading that it doesn't. That's cost me time on more than one project, but it's also the only way I actually learned what EMI does to a real circuit, or what a farmer actually needs versus what I assumed they needed.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">2026</span>
+          <div class="timeline-text"><strong>President, IEEE Georgia Tech</strong><br><span>700+ mailing list · $50K budget · RoboTech hackathon</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2025–26</span>
+          <div class="timeline-text"><strong>Robotics Engineering Intern, Promaxo</strong><br><span>MRI-compatible surgical robotics · Oakland, CA</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">Jan–May 26</span>
+          <div class="timeline-text"><strong>Undergraduate Researcher, GT Electronic ARTrium</strong><br><span>3 semesters · Depth cameras · AR sandbox</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2023–</span>
+          <div class="timeline-text"><strong>BS Electrical Engineering, Georgia Tech</strong><br><span>Robotics thread · Expected May 2027</span></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2019–</span>
+          <div class="timeline-text"><strong>Founder, Stayive</strong><br><span>IoT hardware startup · Smart irrigation · Field-tested</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-copy">© 2026 Saksham Bansal</span>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/bansalsaksham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/bansalsaksham" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:sakshambansal@gatech.edu">Email</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="resume-saksham-bansal.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme(){var h=document.documentElement,b=document.getElementById('theme-btn'),c=h.getAttribute('data-theme'),n=c==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);b.textContent=n==='dark'?'[ dark ]':'[ light ]';}
+    (function(){var t=localStorage.getItem('theme')||'light';document.getElementById('theme-btn').textContent=t==='dark'?'[ dark ]':'[ light ]';document.querySelectorAll('nav a').forEach(function(a){if(a.href===window.location.href)a.classList.add('active');});})();
+    var lines=['building embedded systems since 13','wiring sensors to the real world','debugging firmware at 3am','shipping hardware that field-tests','running a 700-person IEEE chapter','growing up in a PCB fab'];
+    var el=document.getElementById('typewriter'),li=0,ci=0,deleting=false,pause=0;
+    function tick(){var line=lines[li];if(pause>0){pause--;setTimeout(tick,60);return;}if(!deleting){el.textContent=line.slice(0,++ci);if(ci===line.length){pause=28;deleting=true;}setTimeout(tick,68);}else{el.textContent=line.slice(0,--ci);if(ci===0){deleting=false;li=(li+1)%lines.length;pause=6;}setTimeout(tick,34);}}
+    setTimeout(tick,800);
+  </script>
+</body>
+</html>

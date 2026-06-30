@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Saksham Bansal: EE Senior at Georgia Tech, open to embedded systems and robotics roles." />
+  <title>Contact | Saksham Bansal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#F7F6F2;--surface:#EEECEA;--ink:#141414;--ink2:#6B6B6B;--ink3:#ABABAB;--accent:#C17D3C;--border:#D8D6D0;--card-bg:#FFFFFF;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;}
+    [data-theme="dark"]{--bg:#0E0E0E;--surface:#1A1A18;--ink:#E8E6DF;--ink2:#8A8880;--ink3:#4A4A48;--accent:#D4904E;--border:#2A2A28;--card-bg:#161614;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;transition:background .25s,color .25s;min-height:100vh;display:flex;flex-direction:column;}
+    body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(var(--ink3) 0.6px,transparent 0.6px);background-size:28px 28px;opacity:.35;pointer-events:none;z-index:0;}
+    header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:56px;background:var(--bg);border-bottom:1px solid var(--border);}
+    .brand{font-family:var(--mono);font-weight:700;font-size:.85rem;letter-spacing:.04em;color:var(--ink);text-decoration:none;}
+    .brand:hover{color:var(--accent);}
+    nav{display:flex;align-items:center;gap:2rem;}
+    nav a{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .15s;}
+    nav a:hover,nav a.active{color:var(--accent);}
+    .theme-btn{background:none;border:1px solid var(--border);border-radius:4px;color:var(--ink2);cursor:pointer;font-family:var(--mono);font-size:.7rem;padding:4px 8px;letter-spacing:.04em;transition:border-color .15s,color .15s;}
+    .theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+    main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;}
+    footer{position:relative;z-index:1;padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);}
+    .footer-copy{font-family:var(--mono);font-size:.68rem;color:var(--ink3);letter-spacing:.04em;}
+    .footer-links{display:flex;gap:1.5rem;}
+    .footer-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .15s;}
+    .footer-links a:hover{color:var(--accent);}
+    .contact-split{display:grid;grid-template-columns:1fr 1fr;flex:1;}
+    .split-left{padding:5rem 3rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;}
+    .split-right{padding:5rem 3rem;display:flex;flex-direction:column;justify-content:center;background:var(--surface);}
+    .page-eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+    .page-title{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:600;letter-spacing:-.02em;color:var(--ink);line-height:1.1;margin-bottom:1.25rem;}
+    .page-sub{font-size:.95rem;color:var(--ink2);line-height:1.8;max-width:400px;}
+    .avail{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);border:1px solid var(--border);padding:6px 12px;border-radius:2px;margin-top:2rem;}
+    .avail-dot{width:6px;height:6px;border-radius:50%;background:#4CAF50;flex-shrink:0;box-shadow:0 0 0 2px rgba(76,175,80,.25);}
+    .contact-list{display:flex;flex-direction:column;margin-bottom:3rem;}
+    .contact-item{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;align-items:center;padding:1.25rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:color .15s;}
+    .contact-item:first-child{padding-top:0;}
+    .contact-item:last-child{border-bottom:none;}
+    .contact-item:hover .contact-value{color:var(--accent);}
+    .contact-label{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);}
+    .contact-value{font-size:.9rem;color:var(--ink);font-weight:500;transition:color .15s;}
+    .looking-title{font-family:var(--mono);font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;}
+    .looking-item{display:flex;gap:.75rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:.85rem;color:var(--ink2);}
+    .looking-item:last-child{border-bottom:none;}
+    .looking-arrow{color:var(--accent);font-family:var(--mono);font-size:.7rem;flex-shrink:0;padding-top:1px;}
+    @media(max-width:900px){
+      header{padding:0 1.5rem;}nav{gap:1.2rem;}
+      .contact-split{grid-template-columns:1fr;}
+      .split-left{padding:3rem 1.5rem;border-right:none;border-bottom:1px solid var(--border);}
+      .split-right{padding:3rem 1.5rem;}
+      footer{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center;}
+    }
+  </style>
+  <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="brand">SB_</a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+    <button class="theme-btn" onclick="toggleTheme()" id="theme-btn">[ light ]</button>
+  </header>
+
+  <main>
+    <div class="contact-split">
+      <div class="split-left">
+        <div class="page-eyebrow">Get in touch</div>
+        <h1 class="page-title">Let's build<br>something real.</h1>
+        <p class="page-sub">Open to embedded systems, robotics, and IoT hardware roles: internships, research, and full-time after May 2027. If a rover, a farm, or a factory floor showed up somewhere in the four pages before this one, you already know what I'd want to work on next.</p>
+        <div class="avail">
+          <span class="avail-dot"></span>
+          Open to opportunities · Based in Atlanta, GA
+        </div>
+      </div>
+
+      <div class="split-right">
+        <div class="contact-list">
+          <a href="mailto:sakshambansal@gatech.edu" class="contact-item">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">sakshambansal@gatech.edu</span>
+          </a>
+          <a href="https://linkedin.com/in/bansalsaksham" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">in/bansalsaksham</span>
+          </a>
+          <a href="https://github.com/bansalsaksham" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">github.com/bansalsaksham</span>
+          </a>
+          <a href="tel:+14049360025" class="contact-item">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+1 (404) 936-0025</span>
+          </a>
+          <a href="resume-saksham-bansal.pdf" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <span class="contact-label">Resume</span>
+            <span class="contact-value">Download PDF →</span>
+          </a>
+        </div>
+
+        <div class="looking-title">What I'm looking for</div>
+        <div class="looking-item"><span class="looking-arrow">→</span> Embedded systems and firmware engineering</div>
+        <div class="looking-item"><span class="looking-arrow">→</span> Robotics and autonomous systems</div>
+        <div class="looking-item"><span class="looking-arrow">→</span> IoT hardware design and PCB roles</div>
+        <div class="looking-item"><span class="looking-arrow">→</span> Digital design and RTL verification</div>
+        <div class="looking-item"><span class="looking-arrow">→</span> Undergraduate research in hardware</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-copy">© 2026 Saksham Bansal</span>
+    <div class="footer-links">
+      <a href="https://linkedin.com/in/bansalsaksham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/bansalsaksham" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:sakshambansal@gatech.edu">Email</a>
+      <a href="certifications.html">Certifications</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme(){var h=document.documentElement,b=document.getElementById('theme-btn'),c=h.getAttribute('data-theme'),n=c==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);b.textContent=n==='dark'?'[ dark ]':'[ light ]';}
+    (function(){var t=localStorage.getItem('theme')||'light';document.getElementById('theme-btn').textContent=t==='dark'?'[ dark ]':'[ light ]';})();
+  </script>
+</body>
+</html>
