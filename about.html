@@ -69,6 +69,16 @@
       .exp-item{grid-template-columns:1fr;gap:.5rem;}
       footer{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center;}
     }
+
+    /* Nav dropdown for About/Certifications */
+    .nav-dropdown{position:relative;}
+    .nav-dropdown>a{display:flex;align-items:center;gap:.25rem;}
+    .nav-dropdown>a::after{content:none;}
+    .dropdown-menu{position:absolute;top:100%;left:0;background:var(--bg);border:1px solid var(--border);min-width:140px;padding:.5rem 0;display:none;z-index:200;margin-top:.5rem;}
+    .nav-dropdown:hover .dropdown-menu{display:block;}
+    .dropdown-menu a{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;padding:.4rem .75rem;transition:color .15s;}
+    .dropdown-menu a:hover{color:var(--accent);}
+    .dropdown-arrow{font-family:var(--mono);font-size:.6rem;color:var(--ink3);}
   </style>
   <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
@@ -76,7 +86,7 @@
   <header>
     <a href="index.html" class="brand">SB_</a>
     <nav>
-      <a href="about.html" class="active">About</a>
+      <div class="nav-dropdown"><a href="about.html" class="active">About <span class="dropdown-arrow">▾</span></a><div class="dropdown-menu"><a href="about.html">About</a><a href="certifications.html">Certifications</a></div></div>
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -120,7 +130,7 @@
             <div>
               <div class="exp-org">LIDAR Lab · Georgia Tech</div>
               <div class="exp-role">Electrical Engineer</div>
-              <div class="exp-desc">A robotics team needed two high-torque servos controlled over USB from an onboard Linux computer, and the board they had been recommended turned out to be wrong for the job, it spoke UART, not the PWM signal the servos actually needed. I diagnosed the mismatch and pointed the team toward a USB-to-PWM controller instead. When the team's chosen board enumerated as a HID device rather than a standard serial port, the usual serial communication libraries didn't apply. I worked through the HID protocol with them, identifying that commands needed to be sent as raw byte arrays rather than ASCII characters, and helped adapt the control script accordingly.</div>
+              <div class="exp-desc">LIDAR (Laboratory for Intelligent Decision and Autonomous Robots) was integrating high-torque servos into a robot via USB from an onboard Linux computer, and the board they had been recommended turned out to be wrong for the job: it spoke UART, not the PWM signal the servos actually needed. I diagnosed the mismatch and pointed the team toward a USB-to-PWM controller instead. When the chosen board enumerated as a HID device rather than a standard serial port, the usual serial communication libraries didn't apply. I worked through the HID protocol, identifying that commands needed to be sent as raw byte arrays rather than ASCII characters, and helped adapt the control script.</div>
               <div class="exp-tags"><span class="exp-tag">USB HID</span><span class="exp-tag">PWM Control</span><span class="exp-tag">Hardware Debugging</span></div>
             </div>
           </div>
@@ -130,7 +140,7 @@
             <div>
               <div class="exp-org">Electronic ARTrium VIP · Georgia Tech</div>
               <div class="exp-role">Undergraduate Researcher</div>
-              <div class="exp-desc">My first semester on the team was hands-on work for Bee My Guide: An Interactive Journey Back Home, a life-sized interactive exhibit at the Ferst Center for the Arts where players guide a lost bee character home through four sections, collecting clues along the way. I worked on the sensors and interactivity for Section 2, designing and building physical fixtures like ticket booth signage and curtain mounting, then spending most of the semester debugging the Arduino-Unity-server pipeline, tracing a recurring connection failure down to a packet size mismatch where Unity was sending more data than the Arduino's buffer could hold. I also presented the team's full electromechanical system, sensor logic, actuators, and the Arduino-Unity-server pipeline across every exhibit section, at IEEE Cyber Physical Week. In later semesters the work shifted toward sensor fusion: implementing TCP/IP communication across a distributed Arduino node network for a different exhibit, then processing live 3D depth data from Orbbec Gemini E cameras so an installation could respond in real time as people interacted with it.</div>
+              <div class="exp-desc">My first semester on the team was hands-on work for Bee My Guide: An Interactive Journey Back Home, a life-sized interactive exhibit at the Ferst Center for the Arts where players guide a lost bee character home through four sections, collecting clues along the way. I worked on the sensors and interactivity for Section 2, designing and building physical fixtures like ticket booth signage and curtain mounting, then spending most of the semester debugging the Arduino-Unity-server pipeline, tracing a recurring connection failure down to a packet size mismatch where Unity was sending more data than the Arduino's buffer could hold. I also presented the team's full electromechanical system at IEEE Cyber Physical Week. In the following two semesters the work shifted to sensor integration: first, implementing TCP/IP communication across a distributed Arduino node network so multiple microcontroller nodes could coordinate in real time; then, processing live 3D depth data from Orbbec Gemini E cameras to let a physical installation sense and respond to how people interacted with it. The depth camera work involved handling point cloud data from the Orbbec SDK and translating spatial changes into exhibit triggers without latency.</div>
               <div class="exp-tags"><span class="exp-tag">TCP/IP</span><span class="exp-tag">Arduino</span><span class="exp-tag">Orbbec Depth Camera</span><span class="exp-tag">AR</span></div>
             </div>
           </div>
@@ -140,8 +150,8 @@
             <div>
               <div class="exp-org">Georgia Tech</div>
               <div class="exp-role">Autodesk Student Ambassador</div>
-              <div class="exp-desc">Most students can model a part in CAD but have never actually sent it to fabrication, the gap between digital design and physical reality trips up a lot of beginners. I run Fusion 360 and PCB design workshops each semester for 50+ students, walking through the parts of the process that aren't obvious from a tutorial, tolerances, manufacturability, what changes when a design leaves the screen.</div>
-              <div class="exp-tags"><span class="exp-tag">Fusion 360</span><span class="exp-tag">PCB Design</span><span class="exp-tag">Workshops</span></div>
+              <div class="exp-desc">Most students can model a part in CAD but have never actually sent it to fabrication, the gap between digital design and physical reality trips up a lot of beginners. I run Fusion and PCB design workshops each semester for 50+ students, walking through the parts of the process that aren't obvious from a tutorial, tolerances, manufacturability, what changes when a design leaves the screen.</div>
+              <div class="exp-tags"><span class="exp-tag">Fusion</span><span class="exp-tag">PCB Design</span><span class="exp-tag">Workshops</span></div>
             </div>
           </div>
 
@@ -150,7 +160,7 @@
             <div>
               <div class="exp-org">Government of India</div>
               <div class="exp-role">Water Ambassador, Gurugram</div>
-              <div class="exp-desc">A furniture factory in India was running its handwashing taps continuously, with no automatic shutoff, wasting enormous volumes of water every month with nobody tracking it. The hard part wasn't the sensor logic, it was getting the timing right so the tap felt natural to use, not like fighting a machine. I built Dripmise, an automatic timer tap that cuts water during the soaping interval and resumes for a fixed rinse window. Installed at Timber Taste, it measured out to 96,000 litres saved per month. The Ministry of Water Resources, Government of India, gave it an INR 10,000 award for water conservation and appointed me Water Ambassador for Gurugram.</div>
+              <div class="exp-desc">A furniture factory in India was running its handwashing taps continuously, with no automatic shutoff, wasting enormous volumes of water every month with nobody tracking it. The hard part wasn't the sensor logic, it was getting the timing right so the tap felt natural to use, not like fighting a machine. I built Dripmise, an automatic timer tap that cuts water during the soaping interval and resumes for a fixed rinse window. Installed at Timber Taste, it measured out to 96,000 litres saved per month. The Ministry of Water Resources, Government of India, recognised my water conservation work with an INR 10,000 award and appointed me Water Ambassador for Gurugram.</div>
               <div class="exp-tags"><span class="exp-tag">96,000 L/month saved</span><span class="exp-tag">INR 10,000 Award</span><span class="exp-tag">Water Conservation</span></div>
             </div>
           </div>
@@ -160,7 +170,7 @@
             <div>
               <div class="exp-org">Stayive</div>
               <div class="exp-role">Founder</div>
-              <div class="exp-desc">Smallholder farmers and small businesses in India often can't access automation built for their actual constraints, most existing solutions assume grid power, smartphones, or budgets that don't match reality on the ground. Stayive is the company behind three hardware products built on that premise: Rootry, the smart irrigation system, now four iterations deep and field-tested on a real 4-acre farm in Delhi-NCR; Opticker, an affordable smart cane for visually impaired navigation; and Dripmise, the automatic timer tap installed at Timber Taste that's saving 96,000 litres of water a month. What started as a CBSE National Science Exhibition project at 13 grew into building hardware that actually gets used, not just demoed.</div>
+              <div class="exp-desc">Stayive is an IoT hardware company building affordable sustainability solutions for real-world constraints. Three products currently in commercial use: Rootry, an autonomous solar-powered irrigation system field-tested on a 4-acre farm in Delhi-NCR with no grid power required; Opticker, an affordable smart cane for visually impaired navigation with IR and ultrasonic sensing; and Dripmise, an automatic timer tap saving 96,000 litres of water monthly at a furniture factory. Each product was designed for the constraint first, not the technology.</div>
               <div class="exp-tags"><span class="exp-tag">ESP32-S3</span><span class="exp-tag">KiCad</span><span class="exp-tag">GSM SIM800L</span><span class="exp-tag">IoT</span></div>
             </div>
           </div>
@@ -192,7 +202,7 @@
           <div class="skill-cat">Hardware</div>
           <div class="skill-row">KiCad (PCB) <span class="skill-level">Advanced</span></div>
           <div class="skill-row">Altium Designer <span class="skill-level">Familiar</span></div>
-          <div class="skill-row">Fusion 360 <span class="skill-level">Proficient</span></div>
+          <div class="skill-row">Fusion <span class="skill-level">Proficient</span></div>
           <div class="skill-row">Oscilloscope / Logic Analyzer <span class="skill-level">Daily use</span></div>
         </div>
 
@@ -206,35 +216,22 @@
         </div>
 
         <div style="margin-top:2.5rem;">
-          <div class="sec-label" style="cursor:pointer;" onclick="toggleCerts()">
-            Certifications <span id="cert-toggle-icon" style="margin-left:auto;font-family:var(--mono);color:var(--ink2);">[ + ]</span>
-          </div>
-          <div id="cert-dropdown" style="display:none;">
-            <div class="skill-row">Altium PCB Basic Design <span class="skill-level">Jan 2026</span></div>
-            <div class="skill-row">GT Intro to Electronics <span class="skill-level">Jul 2023</span></div>
-            <div class="skill-row">Elemento Labs Robotics and Software <span class="skill-level">2021</span></div>
-            <div class="skill-row">GT Intro to Computing using Python <span class="skill-level">Oct 2023</span></div>
-            <div class="skill-row">Stanford Intro to IoT <span class="skill-level">2024</span></div>
-            <div class="skill-row">IBM Robotics Process Automation <span class="skill-level">Nov 2021</span></div>
-            <div class="skill-row">ISRO/IIRS Space Science and Technology <span class="skill-level">Jul 2022</span></div>
-            <div class="skill-row">ISRO/IIRS Remote Sensing and GIS <span class="skill-level">Jul 2021</span></div>
-            <div class="skill-row">University of Michigan Successful Negotiation <span class="skill-level">May 2023</span></div>
-            <div class="skill-row">Google Fundamentals of Digital Marketing <span class="skill-level">n/a</span></div>
-            <div style="margin-top:.75rem;"><a href="https://linkedin.com/in/bansalsaksham" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;color:var(--accent);text-decoration:none;">Full list with badges on LinkedIn →</a></div>
-          </div>
+          <div class="sec-label">Certifications</div>
+          <div class="skill-row">Altium PCB Basic Design <span class="skill-level">Jan 2026</span></div>
+          <div class="skill-row">Stanford Intro to IoT <span class="skill-level">2024</span></div>
+          <div class="skill-row">GT Intro to Electronics <span class="skill-level">Jul 2023</span></div>
+          <div class="skill-row">GT Intro to Computing using Python <span class="skill-level">Oct 2023</span></div>
+          <div class="skill-row">Elemento Labs Robotics and Software <span class="skill-level">2021</span></div>
+          <div class="skill-row">IBM Robotics Process Automation <span class="skill-level">Nov 2021</span></div>
+          <div class="skill-row">ISRO/IIRS Space Science and Technology <span class="skill-level">Jul 2022</span></div>
+          <div class="skill-row">ISRO/IIRS Remote Sensing and GIS <span class="skill-level">Jul 2021</span></div>
+          <div class="skill-row">University of Michigan Successful Negotiation <span class="skill-level">May 2023</span></div>
+          <div class="skill-row">Google Fundamentals of Digital Marketing <span class="skill-level">n/a</span></div>
+          <div style="margin-top:.75rem;"><a href="https://linkedin.com/in/bansalsaksham" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:.65rem;letter-spacing:.06em;color:var(--accent);text-decoration:none;">Full list with badges on LinkedIn →</a></div>
         </div>
       </div>
     </div>
 
-    <script>
-      function toggleCerts() {
-        var d = document.getElementById('cert-dropdown');
-        var i = document.getElementById('cert-toggle-icon');
-        var open = d.style.display === 'block';
-        d.style.display = open ? 'none' : 'block';
-        i.textContent = open ? '[ + ]' : '[ \u2212 ]';
-      }
-    </script>
   </main>
 
   <footer>
@@ -243,7 +240,6 @@
       <a href="https://linkedin.com/in/bansalsaksham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="https://github.com/bansalsaksham" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="mailto:sakshambansal@gatech.edu">Email</a>
-      <a href="certifications.html">Certifications</a>
       <a href="resume-saksham-bansal.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
     </div>
   </footer>
