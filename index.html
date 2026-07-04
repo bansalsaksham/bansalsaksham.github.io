@@ -91,6 +91,16 @@
       footer{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center;}
     }
     @media(prefers-reduced-motion:reduce){.cursor{animation:none;opacity:1;}}
+
+    /* Nav dropdown for About/Certifications */
+    .nav-dropdown{position:relative;}
+    .nav-dropdown>a{display:flex;align-items:center;gap:.25rem;}
+    .nav-dropdown>a::after{content:none;}
+    .dropdown-menu{position:absolute;top:100%;left:0;background:var(--bg);border:1px solid var(--border);min-width:140px;padding:.5rem 0;display:none;z-index:200;margin-top:.5rem;}
+    .nav-dropdown:hover .dropdown-menu{display:block;}
+    .dropdown-menu a{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;padding:.4rem .75rem;transition:color .15s;}
+    .dropdown-menu a:hover{color:var(--accent);}
+    .dropdown-arrow{font-family:var(--mono);font-size:.6rem;color:var(--ink3);}
   </style>
   <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
@@ -98,7 +108,7 @@
   <header>
     <a href="index.html" class="brand">SB_</a>
     <nav>
-      <a href="about.html">About</a>
+      <div class="nav-dropdown"><a href="about.html">About <span class="dropdown-arrow">▾</span></a><div class="dropdown-menu"><a href="about.html">About</a><a href="certifications.html">Certifications</a></div></div>
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -163,7 +173,7 @@
         <a href="https://github.com/bansalsaksham/ARIS" target="_blank" rel="noopener noreferrer" class="work-card">
           <div class="card-tag">Robotics · ECE Innovate 2026</div>
           <div class="card-title">A.R.I.S.: Autonomous Rescue and Inspection System</div>
-          <div class="card-desc">A rover built to scout dangerous spaces before a person has to walk in. It senses, decides, and reports back on its own. Took first place in its thread at ECE Innovate.</div>
+          <div class="card-desc">A rover built to scout dangerous spaces before a person has to walk in. It senses, decides, and reports back on its own.</div>
           <div class="card-award">🏆 Best in Thread · $1,000 · ECE Innovate 2026</div>
           <div class="card-footer"><span class="card-stack">ESP32 · C++ · ESPAsyncWebServer · MPU6050 · MQ-6</span></div>
         </a>
@@ -193,23 +203,23 @@
       <div class="timeline">
         <div class="timeline-item">
           <span class="timeline-year">2026</span>
-          <div class="timeline-text"><strong>President, IEEE Georgia Tech</strong><br><span>700+ mailing list · $50K budget · RoboTech hackathon</span></div>
+          <div class="timeline-text"><strong>President, IEEE Georgia Tech</strong><br><span>700+ official members · $50K budget · RoboTech Flagship Hackathon</span></div>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">2025–26</span>
+          <span class="timeline-year">2025</span>
           <div class="timeline-text"><strong>Robotics Engineering Intern, Promaxo</strong><br><span>MRI-compatible surgical robotics · Oakland, CA</span></div>
         </div>
         <div class="timeline-item">
           <span class="timeline-year">Jan–May 26</span>
-          <div class="timeline-text"><strong>Undergraduate Researcher, GT Electronic ARTrium</strong><br><span>3 semesters · Depth cameras · AR sandbox</span></div>
+          <div class="timeline-text"><strong>Undergraduate Researcher, GT Electronic ARTrium</strong><br><span>Bee My Guide exhibit · Section 2 sensors · AR and depth cameras</span></div>
         </div>
         <div class="timeline-item">
           <span class="timeline-year">2023–</span>
-          <div class="timeline-text"><strong>BS Electrical Engineering, Georgia Tech</strong><br><span>Robotics thread · Expected May 2027</span></div>
+          <div class="timeline-text"><strong>BS Electrical Engineering, Georgia Tech</strong><br><span>Robotics and Autonomous Systems; Circuit Technology</span></div>
         </div>
         <div class="timeline-item">
           <span class="timeline-year">2019–</span>
-          <div class="timeline-text"><strong>Founder, Stayive</strong><br><span>IoT hardware startup · Smart irrigation · Field-tested</span></div>
+          <div class="timeline-text"><strong>Founder, Stayive</strong><br><span>Rootry (irrigation) · Opticker (smart cane) · Dripmise (water tap)</span></div>
         </div>
       </div>
     </div>
@@ -221,7 +231,6 @@
       <a href="https://linkedin.com/in/bansalsaksham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="https://github.com/bansalsaksham" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="mailto:sakshambansal@gatech.edu">Email</a>
-      <a href="certifications.html">Certifications</a>
       <a href="resume-saksham-bansal.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
     </div>
   </footer>
