@@ -99,7 +99,7 @@
         <div class="card-body">
           <div class="card-tag">IoT Hardware · 2019 – Present</div>
           <div class="card-title">Rootry: Smart Irrigation for Smallholder Farms</div>
-          <div class="card-desc clamped">Smallholder farms in Delhi-NCR often have no grid power and irregular labor for manual watering, so crops get overwatered, underwatered, or skipped entirely depending on who's around that day. The hard part wasn't the sensor logic, it was making something a farmer with no smartphone could trust without checking it. I designed hysteresis band moisture control, 30 to 50%, with adaptive compensation above 35°C, and dual GSM and WiFi so alerts reach any feature phone. Four iterations and six years later it's field-tested on a real 4-acre site, with a measured 30% water reduction (250 L/m² vs 360 L/m² on the control plot). If you want to see hardware that had to survive actual field conditions rather than a demo table, this is it.</div>
+          <div class="card-desc clamped">Smallholder farms in Delhi-NCR often run without grid power and with irregular labor for manual watering, so crops get overwatered, underwatered, or skipped depending on who's around that day. The sensor logic wasn't the hard part — building something a farmer with no smartphone could trust without checking on it was. Hysteresis-band moisture control (30–50%) with adaptive compensation above 35°C, dual GSM and WiFi so alerts reach any feature phone. Four iterations and six years in, it's field-tested on a real 4-acre site: a measured 30% water reduction, 250 L/m² against 360 L/m² on the control plot.</div>
           <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
           <div class="card-award">🌍 Runner-up Worldwide · UPenn EcoVenture 2026</div>
           <div class="card-award">🏆 Sponsor Track Winner · ImpactHack 2023</div>
@@ -116,7 +116,7 @@
         <div class="card-body">
           <div class="card-tag">Robotics · ECE Innovate 2026 · Georgia Tech</div>
           <div class="card-title">A.R.I.S.: Autonomous Rescue and Inspection System</div>
-          <div class="card-desc clamped">A partially collapsed building or a structure fire is exactly where you don't want to send a person first to check for gas leaks or assess structural damage, but most rovers still need a human driving them through that same dangerous space, which defeats the purpose. The challenge was making the rover decide on its own inside that kind of environment, without lag, without a human in the loop, while still reporting back something useful. I built a non-blocking FSM cycling through EXPLORING, TURNING, and HAZARD DETECTED states, with closed-loop proportional heading correction from an MPU6050 IMU, ultrasonic clearance sensing, and an MQ-6 gas sensor for hazard detection. Telemetry streams to an operator dashboard 4 times a second over WebSocket. It won Best in Thread, judged entirely online from a submitted user guide, demo video, and thread reflection, no live demo, no room full of judges, just the work speaking for itself. If you're evaluating autonomous systems experience, this is the project where the robot actually had to think without me.</div>
+          <div class="card-desc clamped">A partially collapsed building or a structure fire is exactly where you don't send a person first to check for gas leaks or structural damage — but most rovers still need a human driving them through that same space, which defeats the purpose. Making the rover decide on its own in that environment, without lag and without a human in the loop, while still reporting back something useful, was the actual problem. A non-blocking FSM cycles through EXPLORING, TURNING, and HAZARD_DETECTED states, with closed-loop proportional heading correction from an MPU6050 IMU, ultrasonic clearance sensing, and an MQ-6 gas sensor. Telemetry streams to an operator dashboard four times a second over WebSocket. It won Best in Thread — judged entirely from a submitted user guide, demo video, and written reflection, no live demo or room of judges involved.</div>
           <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
           <div class="card-award">🏆 Best in Thread · $1,000 · ECE Innovate 2026</div>
           <div class="card-footer">
@@ -132,7 +132,7 @@
         <div class="card-body">
           <div class="card-tag">PCB Design · Industrial IoT</div>
           <div class="card-title">PressLog: Industrial IoT OEE Downtime Logger</div>
-          <div class="card-desc clamped">A hardware internship asked me to solve a real factory-floor problem as the second interview round: workers need a fast, reliable way to log machine downtime causes without slowing down the line. The deliverable was the design, not a built unit, so this is the schematic and layout work, not a soldered board. Manufacturing floors are brutal on electronics, motor noise, dust, vibration, and workers who just want to press a button and move on without thinking about it. I designed a 2-layer KiCad PCB with six illuminated tactile buttons, each one a downtime category, confirmed by LED, an 85dB buzzer, and vibration feedback. RC debounce filtering protects every input from VFD electrical noise, the I2C bus is routed clear of the buck converter's switching node, and the whole thing logs to flash before ever attempting a network call, so no event is lost if the connection drops. The board is DRC and ERC clean with Gerbers ready to fabricate. The company liked the approach enough to mention it directly, even as they narrowed their cohort. If you want proof I can design for conditions that actually break naive circuits, this is the card to read closely.</div>
+          <div class="card-desc clamped">This came out of a second-round interview case study: a factory needs a fast, reliable way for workers to log downtime causes without slowing the line. The deliverable was the design itself, not a built unit, so what's here is schematic and layout work rather than a soldered board. Manufacturing floors are rough on electronics — motor noise, dust, vibration, workers who just want to press a button and move on. It's a 2-layer KiCad PCB with six illuminated tactile buttons, one per downtime category, confirmed by LED, an 85dB buzzer, and vibration feedback. RC debounce filtering protects every input from VFD electrical noise, the I2C bus is routed clear of the buck converter's switching node, and the whole thing logs to flash before attempting a network call, so nothing gets lost if the connection drops. DRC and ERC clean, Gerbers ready to fabricate. It came up again in later interview rounds even as the company narrowed its cohort.</div>
           <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
           <div class="card-footer">
             <span class="card-stack">ESP32-S3 · KiCad · LittleFS · DS3231 · PN532 NFC · 24VDC</span>
@@ -147,7 +147,7 @@
         <div class="card-body">
           <div class="card-tag">Digital Design · VLSI · Full Flow</div>
           <div class="card-title">RTL-to-GDSII 64-bit Calculator</div>
-          <div class="card-desc clamped">Before Silicon Jackets onboarding I didn't know what Digital Design or Design Verification actually meant in practice, the concepts existed only in lecture slides. The real difficulty wasn't any single stage, it was carrying one design through every stage without handing it off to someone else, which most students never do solo. I built a memory-mapped 64-bit calculator end to end: RTL in SystemVerilog with an FSM controller and SRAM interface, a constrained-random testbench in Cadence Xcelium reaching 99.2% code coverage confirmed in Verdi, then synthesis in Genus, place-and-route with CTS in Innovus, and timing closure in Tempus. I never joined the org afterward, by choice, but I'd already completed the full flow independently by the time I decided that. If you're trying to gauge whether I understand silicon beyond writing RTL, this is the project that proves the rest of the flow too.</div>
+          <div class="card-desc clamped">Before Silicon Jackets onboarding, Digital Design and Design Verification were lecture-slide concepts I hadn't actually done. The harder part wasn't any single stage — it was carrying one design through every stage myself instead of splitting it up, which most people onboarding this way don't do solo. I built a memory-mapped 64-bit calculator end to end: RTL in SystemVerilog with an FSM controller and SRAM interface, a constrained-random testbench in Cadence Xcelium reaching 99.6% functional coverage confirmed in Verdi, synthesis in Genus, place-and-route with CTS in Innovus, and timing closure in Tempus. I'd already finished the full flow independently before deciding, on my own terms, not to join the org afterward.</div>
           <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
           <span class="card-note">New repo with original work in progress · link will be updated</span>
           <div class="card-footer">
@@ -163,7 +163,7 @@
         <div class="card-body">
           <div class="card-tag">ML · Course Project · ECE2806 · Georgia Tech</div>
           <div class="card-title">GPT Domain Fine-Tune</div>
-          <div class="card-desc clamped">A generic language model doesn't know your specific course material, it'll hallucinate or generalize instead of answering precisely within a narrow academic domain. The course gave us starter code, but tuning it well meant understanding why each hyperparameter mattered, not just changing numbers until results improved. I trained on Georgia Tech's AI Makerspace, a cluster of NVIDIA H100 GPUs available to engineering students, which made the sweep itself fast enough to actually iterate. I fine-tuned a GPT-style causal transformer on a hand-curated corpus covering PCA, Reinforcement Learning, and Decision Trees, running systematic sweeps across learning rate, batch size, attention heads, transformer layers, and tokenizer strategy. The best configuration, lr 0.003, 128 batch size, 8 heads, GPT-2 tokenizer, hit a ROUGE-1 score of 0.186 and Levenshtein distance of 81.75 across 16 standardized prompt-answer pairs. This is a side skill, not a focus, but it shows I can work methodically even outside hardware.</div>
+          <div class="card-desc clamped">Course project for ECE2806: a generic language model doesn't know your course material well enough to answer precisely inside a narrow academic domain, so the assignment was to fine-tune one that does. We got starter code, but tuning it well meant understanding why each hyperparameter mattered rather than adjusting numbers until the score moved. Training ran on Georgia Tech's AI Makerspace (a cluster of NVIDIA H100 GPUs available to engineering students), which made full sweeps practical. I fine-tuned a GPT-style causal transformer on a hand-curated corpus covering PCA, reinforcement learning, and decision trees, sweeping learning rate, batch size, attention heads, transformer layers, and tokenizer strategy. The best configuration — lr 0.003, batch size 128, 8 heads, GPT-2 tokenizer — hit a ROUGE-1 score of 0.186 and a Levenshtein distance of 81.75 across 16 standardized prompt-answer pairs.</div>
           <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
           <div class="card-footer">
             <span class="card-stack">Python · PyTorch · GPT-2 tokenizer · ROUGE · Levenshtein</span>
@@ -178,7 +178,7 @@
         <div class="card-body">
           <div class="card-tag">Software · Hackathon · Team: Aamod Varma, Saksham Bansal, Ze Yu Jiang</div>
           <div class="card-title">TraverGo: AI-Powered Hotel Discovery</div>
-          <div class="card-desc">Reading hundreds of hotel reviews to find the right match is slow, so we built a conversational search layer instead. Natural language queries match against hotel descriptions through a Qdrant vector database, sentiment analysis across reviews generates summary ratings, and a LangChain plus OpenAI chatbot answers follow-up questions using live location data from the Traversaal Ares API. A decoder model explains why each hotel was recommended, so the answer isn't a black box.</div>
+          <div class="card-desc">Built for HackGT: a conversational search layer for hotel discovery, since digging through hundreds of reviews to find the right match doesn't scale. Natural-language queries match against hotel descriptions via a Qdrant vector database, sentiment analysis across reviews rolls up into summary ratings, and a LangChain + OpenAI chatbot handles follow-ups using live location data from the Traversaal Ares API. A decoder model explains why each hotel got recommended, so it's not a black box.</div>
           <div class="card-award">🏆 Traversaal Ares API Sponsor Track Winner · 1,000+ participant hackathon</div>
           <div class="card-footer">
             <span class="card-stack">Python · Qdrant · LangChain · OpenAI · Streamlit · sentence-transformers</span>
@@ -193,7 +193,7 @@
         <div class="card-body">
           <div class="card-tag">Mechatronics · Water Conservation</div>
           <div class="card-title">Dripmise: Automatic Timer Tap</div>
-          <div class="card-desc">WHO guidelines during COVID called for scrubbing hands with soap for a full 20 seconds, not just rinsing under water. Dripmise was built around that exact window: an automatic faucet that cuts water flow during the 20-second soap cycle, then resumes for a timed rinse, so the habit and the conservation happen together instead of competing. Installed at Timber Taste, a furniture factory in India, it measured 96,000 litres saved per month. The Ministry of Water Resources, Government of India, gave it an INR 10,000 award for water conservation, and appointed me Water Ambassador for Gurugram.</div>
+          <div class="card-desc">An automatic faucet built around the WHO's COVID-era 20-second hand-washing guidance — it cuts water flow during the soap cycle, then resumes for a timed rinse, so the habit and the water savings happen together instead of competing. Installed at Timber Taste, a furniture factory in India, it measured 96,000 litres saved per month. The Ministry of Water Resources, Government of India, gave it an INR 10,000 water-conservation award and named me Water Ambassador for Gurugram.</div>
           <div class="card-award">🏅 INR 10,000 · Ministry of Water Resources · Water Conservation</div>
           <div class="card-footer">
             <span class="card-stack">Arduino · Ultrasonic · Relay · Solenoid Valve</span>
@@ -208,7 +208,7 @@
         <div class="card-body">
           <div class="card-tag">Embedded · ARM Mbed</div>
           <div class="card-title">Mbed Wordle (2035le)</div>
-          <div class="card-desc">A phone can run Wordle without thinking about memory. A microcontroller can't. I built the game on ARM Mbed using a doubly linked list for heap management, custom pixel-rendering on an LCD, and a real-time FSM driving nav-switch input, the kind of constraint that makes a five-minute game take a lot longer to build right.</div>
+          <div class="card-desc">A Wordle clone on ARM Mbed, where memory management isn't something you get to take for granted the way a phone app can. Heap management runs on a doubly linked list, the LCD uses custom pixel-level rendering, and a real-time FSM drives nav-switch input — the kind of constraint that turns a five-minute game into a much longer build.</div>
           <div class="card-footer">
             <span class="card-stack">C++ · ARM Mbed · RTOS · LCD</span>
             <a href="https://github.com/bansalsaksham/wordle_mbed" class="card-link">Repo →</a>
@@ -222,7 +222,7 @@
         <div class="card-body">
           <div class="card-tag">Assistive Tech · Embedded C</div>
           <div class="card-title">Opticker: Smart Cane for the Visually Impaired</div>
-          <div class="card-desc">Most assistive tech for visually impaired navigation is too expensive to be widely usable. I designed Opticker to solve drop and stair detection with an IR sensor and forward obstacle avoidance with ultrasonic, using dual-buzzer feedback so the user can tell hazard types apart by sound alone, all built to stay manufacturable at low cost. Presented it at Satyam Innovation Fest 2022 in front of Rakesh Bharti Mittal (Vice-Chairman, Bharti Enterprises) and Ritesh Agarwal (Founder and CEO, OYO).</div>
+          <div class="card-desc">A low-cost assistive cane: IR sensing for drop and stair detection, ultrasonic sensing for forward obstacles, dual-buzzer feedback so a user can tell hazard types apart by sound alone. Designed to stay manufacturable at low cost rather than optimized purely for lab conditions. Presented at Satyam Innovation Fest 2022 in front of Rakesh Bharti Mittal (Vice-Chairman, Bharti Enterprises) and Ritesh Agarwal (Founder and CEO, OYO).</div>
           <div class="card-footer">
             <span class="card-stack">Embedded C · IR · Ultrasonic · Buzzer</span>
             <a href="https://github.com/bansalsaksham/smart_cane" class="card-link">Repo →</a>
@@ -236,7 +236,7 @@
         <div class="card-body">
           <div class="card-tag">ML + Embedded</div>
           <div class="card-title">Grid Guard</div>
-          <div class="card-desc">Buildings waste energy because HVAC systems react instead of predicting, and commercial facilities are also bound by government emissions restrictions they need to actively track, not just hope they meet. I integrated current and gas sensors into a real-time emissions dashboard, then trained SVR models to forecast consumption trends and automate HVAC and ventilation decisions ahead of demand. The dashboard keeps emissions within regulatory limits while improving the device's own operating efficiency at the same time.</div>
+          <div class="card-desc">A real-time emissions dashboard for commercial buildings. Current and gas sensors feed SVR models that forecast consumption trends, so HVAC and ventilation decisions get made ahead of demand instead of reacting to it — built to help facilities track emissions against regulatory limits while improving operating efficiency at the same time.</div>
           <div class="card-footer">
             <span class="card-stack">Python · SVR · Current Sensor · Gas Sensor</span>
             <a href="https://github.com/bansalsaksham/Grid_Guard" class="card-link">Repo →</a>
@@ -250,7 +250,7 @@
         <div class="card-body">
           <div class="card-tag">Robotics · Control</div>
           <div class="card-title">Line Follower Robot</div>
-          <div class="card-desc">A basic line follower jerks and overcorrects. Mine uses an IR sensor array with an Adafruit Motor Shield, and I tuned the motor control logic specifically to smooth out alignment and speed correction so the robot tracks the line without the usual stutter.</div>
+          <div class="card-desc">An IR-sensor-array line follower on an Adafruit Motor Shield. Most line followers jerk and overcorrect; the motor control logic here is tuned specifically for smoother alignment and speed correction, so it tracks without the usual stutter.</div>
           <div class="card-footer">
             <span class="card-stack">Arduino · IR · Adafruit Motor Shield</span>
             <a href="https://github.com/bansalsaksham/Line_follower" class="card-link">Repo →</a>
@@ -264,7 +264,7 @@
         <div class="card-body">
           <div class="card-tag">Embedded · Security</div>
           <div class="card-title">Home Security System</div>
-          <div class="card-desc">A motion sensor alone triggers false alarms constantly, daylight, pets, shadows. I combined PIR motion detection with LDR light sensing so the alarm only fires in low-light, high-motion conditions, cutting false positives without losing real coverage.</div>
+          <div class="card-desc">PIR motion detection combined with LDR light sensing, so the alarm only fires in low-light, high-motion conditions. A PIR sensor alone trips constantly on daylight, pets, and shadows; pairing it with the light sensor cuts the false positives without losing real coverage.</div>
           <div class="card-footer">
             <span class="card-stack">Arduino · PIR · LDR · Buzzer</span>
             <a href="https://github.com/bansalsaksham/Home_Security_Alarm" class="card-link">Repo →</a>
@@ -278,7 +278,7 @@
         <div class="card-body">
           <div class="card-tag">Python · Algorithms · Course Project · CS1301</div>
           <div class="card-title">Tic-Tac-Toe (Minimax AI)</div>
-          <div class="card-desc">Built an unbeatable Tic-Tac-Toe opponent using Minimax search, with the decision tree running in real time inside a Pygame interface, simple game, but a clean implementation of adversarial search.</div>
+          <div class="card-desc">An unbeatable Tic-Tac-Toe opponent built with Minimax search, running the decision tree in real time inside a Pygame interface. A small project, and a clean, complete implementation of adversarial search.</div>
           <div class="card-footer">
             <span class="card-stack">Python · Minimax · Pygame</span>
             <a href="https://github.com/bansalsaksham/tic-tac-toe" class="card-link">Repo →</a>
@@ -286,13 +286,27 @@
         </div>
       </div>
 
-      <!-- 14. RECEIPT ROVER -->
+      <!-- 14. NOISE INDICATOR -->
+      <div class="project-card">
+        <img src="images/project_noise.jpg" alt="Noise Indicator" class="card-img">
+        <div class="card-body">
+          <div class="card-tag">Analog · Signal Processing</div>
+          <div class="card-title">Noise Indicator</div>
+          <div class="card-desc">An analog microphone feeds an Arduino for real-time ambient decibel monitoring, with LED brightness scaling directly to measured sound level, a small project, but useful for understanding analog signal processing fundamentals.</div>
+          <div class="card-footer">
+            <span class="card-stack">Arduino · Analog · Signal Processing</span>
+            <a href="https://github.com/bansalsaksham/noise_indicator" class="card-link">Repo →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. RECEIPT ROVER -->
       <div class="project-card">
         <img src="images/project_receiptrover.jpg" alt="Receipt Rover" class="card-img">
         <div class="card-body">
           <div class="card-tag">Python · Automation</div>
           <div class="card-title">Receipt Rover</div>
-          <div class="card-desc">Manually tracking spending and its environmental cost is tedious enough that nobody does it. Receipt Rover extracts data from a photo or text input, visualizes spending patterns automatically, and calculates the carbon footprint behind each purchase.</div>
+          <div class="card-desc">Turns a photo or pasted receipt text into a spending breakdown and an estimated carbon footprint — the kind of tracking most people skip because doing it by hand is tedious enough that nobody bothers.</div>
           <div class="card-footer">
             <span class="card-stack">Python · Data Extraction · Analytics</span>
             <a href="https://github.com/bansalsaksham/receipt_rover" class="card-link">Repo →</a>
