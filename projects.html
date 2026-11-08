@@ -1,352 +1,682 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Projects by Saksham Bansal, embedded systems, robotics, IoT, and digital design." />
-  <title>Projects | Saksham Bansal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#F7F6F2;--surface:#EEECEA;--ink:#141414;--ink2:#6B6B6B;--ink3:#ABABAB;--accent:#C17D3C;--border:#D8D6D0;--card-bg:#FFFFFF;--mono:'JetBrains Mono',monospace;--sans:'Inter',sans-serif;}
-    [data-theme="dark"]{--bg:#0E0E0E;--surface:#1A1A18;--ink:#E8E6DF;--ink2:#8A8880;--ink3:#4A4A48;--accent:#D4904E;--border:#2A2A28;--card-bg:#161614;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;transition:background .25s,color .25s;min-height:100vh;}
-    body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(var(--ink3) 0.6px,transparent 0.6px);background-size:28px 28px;opacity:.35;pointer-events:none;z-index:0;}
-    header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:56px;background:var(--bg);border-bottom:1px solid var(--border);}
-    .brand{font-family:var(--mono);font-weight:700;font-size:.85rem;letter-spacing:.04em;color:var(--ink);text-decoration:none;}
-    .brand:hover{color:var(--accent);}
-    nav{display:flex;align-items:center;gap:2rem;}
-    nav a{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .15s;}
-    nav a:hover,nav a.active{color:var(--accent);}
-    .theme-btn{background:none;border:1px solid var(--border);border-radius:4px;color:var(--ink2);cursor:pointer;font-family:var(--mono);font-size:.7rem;padding:4px 8px;letter-spacing:.04em;transition:border-color .15s,color .15s;}
-    .theme-btn:hover{border-color:var(--accent);color:var(--accent);}
-    main{position:relative;z-index:1;}
-    footer{position:relative;z-index:1;padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);}
-    .footer-copy{font-family:var(--mono);font-size:.68rem;color:var(--ink3);letter-spacing:.04em;}
-    .footer-links{display:flex;gap:1.5rem;}
-    .footer-links a{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .15s;}
-    .footer-links a:hover{color:var(--accent);}
-
-    .page-header{padding:4rem 3rem 3rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
-    .page-eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.75rem;}
-    .page-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;letter-spacing:-.02em;color:var(--ink);line-height:1.1;}
-    .filter-row{display:flex;gap:.5rem;flex-wrap:wrap;}
-
-    .project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border-left:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
-    .project-card{background:var(--card-bg);padding:0;border-left:3px solid transparent;transition:border-color .2s;text-decoration:none;color:inherit;display:flex;flex-direction:column;}
-    .project-card:hover{border-left-color:var(--accent);}
-    .card-img{width:100%;height:200px;object-fit:cover;display:block;background:var(--surface);}
-    .card-body{padding:1.75rem 1.75rem 1.75rem 2rem;display:flex;flex-direction:column;flex:1;}
-    .card-tag{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem;}
-    .card-title{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;letter-spacing:-.01em;}
-    .card-desc{font-size:.84rem;color:var(--ink2);line-height:1.75;flex:1;}
-    .card-desc.clamped{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
-    .read-more-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:none;border:none;cursor:pointer;padding:.5rem 0 0;text-align:left;}
-    .read-more-btn:hover{text-decoration:underline;}
-    .card-award{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:2px 6px;border-radius:2px;display:inline-block;margin-top:.75rem;align-self:flex-start;}
-    .card-note{font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;color:var(--ink3);margin-top:.5rem;display:block;}
-    .card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1.25rem;flex-wrap:wrap;gap:.5rem;}
-    .card-stack{font-family:var(--mono);font-size:.6rem;color:var(--ink3);letter-spacing:.04em;line-height:1.6;}
-    .card-link{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:3px 8px;border-radius:2px;transition:background .15s,color .15s;white-space:nowrap;flex-shrink:0;}
-    .card-link:hover{background:var(--accent);color:var(--bg);}
-
-    @media(max-width:900px){
-      header{padding:0 1.5rem;}nav{gap:1.2rem;}
-      .page-header{padding:3rem 1.5rem 2rem;}
-      .project-grid{grid-template-columns:1fr;}
-      footer{padding:1.5rem;flex-direction:column;gap:1rem;text-align:center;}
-    }
-
-    /* Nav dropdown for About/Certifications */
-    .nav-dropdown{position:relative;}
-    .nav-dropdown>a{display:flex;align-items:center;gap:.25rem;}
-    .nav-dropdown>a::after{content:none;}
-    .dropdown-menu{position:absolute;top:100%;left:0;background:var(--bg);border:1px solid var(--border);min-width:140px;padding:.5rem 0;display:none;z-index:200;margin-top:.5rem;}
-    .nav-dropdown:hover .dropdown-menu{display:block;}
-    .dropdown-menu a{display:block;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;padding:.4rem .75rem;transition:color .15s;}
-    .dropdown-menu a:hover{color:var(--accent);}
-    .dropdown-arrow{font-family:var(--mono);font-size:.6rem;color:var(--ink3);}
-  </style>
-  <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
-</head>
-<body>
-  <header>
-    <a href="index.html" class="brand">SB_</a>
-    <nav>
-      <div class="nav-dropdown"><a href="about.html">About <span class="dropdown-arrow">▾</span></a><div class="dropdown-menu"><a href="about.html">About</a><a href="certifications.html">Certifications</a></div></div>
-      <a href="projects.html" class="active">Projects</a>
-      <a href="contact.html">Contact</a>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="Saksham Bansal &mdash; Georgia Tech electrical engineering portfolio" name="description"/>
+  <title>
+   Projects &middot; Saksham Bansal
+  </title>
+  <link href="assets/style.css" rel="stylesheet"/>
+  <link href="assets/fullsite.css" rel="stylesheet"/>
+ </head>
+ <body data-theme="c">
+  <div class="shell">
+   <header class="top">
+    <a class="logo" href="index.html">
+     SB
+     <span>
+      _
+     </span>
+    </a>
+    <nav class="nav">
+     <a href="index.html">
+      Home
+     </a>
+     <a href="projects.html">
+      Projects
+     </a>
+     <a href="about.html">
+      About
+     </a>
+     <a href="certifications.html">
+      Certifications
+     </a>
+     <a href="contact.html">
+      Contact
+     </a>
     </nav>
-    <button class="theme-btn" onclick="toggleTheme()" id="theme-btn">[ light ]</button>
-  </header>
-
-  <main>
-    <div class="page-header">
-      <div>
-        <div class="page-eyebrow">Work</div>
-        <h1 class="page-title">Projects</h1>
-      </div>
+    <a class="resume-nav" href="resume-saksham-bansal.pdf" rel="noopener" target="_blank">
+     Resume &nearrow;
+    </a>
+   </header>
+   <main>
+    <section class="inside-hero">
+     <div class="eyebrow">
+      PROJECT ARCHIVE / 15 BUILDS
+     </div>
+     <h1>
+      Things I&rsquo;ve
+      <em>
+       actually built.
+      </em>
+     </h1>
+     <p>
+      Not every project needs a full page. Choose a category, open a build, and explore its real image, technical approach, and source.
+     </p>
+    </section>
+    <div aria-label="Project categories" class="filter-row">
+     <button class="filter active" data-cat="all">
+      All work
+     </button>
+     <button class="filter" data-cat="hardware">
+      Hardware + PCB
+     </button>
+     <button class="filter" data-cat="robotics">
+      Robotics
+     </button>
+     <button class="filter" data-cat="digital">
+      Digital
+     </button>
+     <button class="filter" data-cat="software">
+      Software + ML
+     </button>
     </div>
-
-    <div class="project-grid" id="project-grid">
-
-      <!-- 1. ROOTRY -->
-      <div class="project-card">
-        <a href="https://github.com/bansalsaksham/Rootry" target="_blank" rel="noopener noreferrer"><img src="images/project_soilhawk.jpg" alt="Rootry" class="card-img"></a>
-        <div class="card-body">
-          <div class="card-tag">IoT Hardware · 2019 – Present</div>
-          <div class="card-title">Rootry: Smart Irrigation for Smallholder Farms</div>
-          <div class="card-desc clamped">Smallholder farms in Delhi-NCR often run without grid power and with irregular labor for manual watering, so crops get overwatered, underwatered, or skipped depending on who's around that day. The sensor logic wasn't the hard part — building something a farmer with no smartphone could trust without checking on it was. Hysteresis-band moisture control (30–50%) with adaptive compensation above 35°C, dual GSM and WiFi so alerts reach any feature phone. Four iterations and six years in, it's field-tested on a real 4-acre site: a measured 30% water reduction, 250 L/m² against 360 L/m² on the control plot.</div>
-          <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
-          <div class="card-award">🌍 Runner-up Worldwide · UPenn EcoVenture 2026</div>
-          <div class="card-award">🏆 Sponsor Track Winner · ImpactHack 2023</div>
-          <div class="card-footer">
-            <span class="card-stack">ESP32-S3 · KiCad · GSM SIM800L · ESPAsyncWebServer · DHT22</span>
-            <a href="https://github.com/bansalsaksham/Rootry" class="card-link" target="_blank" rel="noopener noreferrer">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 2. ARIS -->
-      <div class="project-card">
-        <a href="https://github.com/bansalsaksham/ARIS" target="_blank" rel="noopener noreferrer"><img src="images/project_aris.jpg" alt="A.R.I.S." class="card-img"></a>
-        <div class="card-body">
-          <div class="card-tag">Robotics · ECE Innovate 2026 · Georgia Tech</div>
-          <div class="card-title">A.R.I.S.: Autonomous Rescue and Inspection System</div>
-          <div class="card-desc clamped">A partially collapsed building or a structure fire is exactly where you don't send a person first to check for gas leaks or structural damage — but most rovers still need a human driving them through that same space, which defeats the purpose. Making the rover decide on its own in that environment, without lag and without a human in the loop, while still reporting back something useful, was the actual problem. A non-blocking FSM cycles through EXPLORING, TURNING, and HAZARD_DETECTED states, with closed-loop proportional heading correction from an MPU6050 IMU, ultrasonic clearance sensing, and an MQ-6 gas sensor. Telemetry streams to an operator dashboard four times a second over WebSocket. It won Best in Thread — judged entirely from a submitted user guide, demo video, and written reflection, no live demo or room of judges involved.</div>
-          <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
-          <div class="card-award">🏆 Best in Thread · $1,000 · ECE Innovate 2026</div>
-          <div class="card-footer">
-            <span class="card-stack">ESP32 · C++ · ESPAsyncWebServer · MPU6050 · MQ-6 · L298N</span>
-            <a href="https://github.com/bansalsaksham/ARIS" class="card-link" target="_blank" rel="noopener noreferrer">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3. PRESSLOG -->
-      <div class="project-card">
-        <a href="https://github.com/bansalsaksham/PressLog" target="_blank" rel="noopener noreferrer"><img src="images/project_presslog.jpg" alt="PressLog PCB" class="card-img"></a>
-        <div class="card-body">
-          <div class="card-tag">PCB Design · Industrial IoT</div>
-          <div class="card-title">PressLog: Industrial IoT OEE Downtime Logger</div>
-          <div class="card-desc clamped">This came out of a second-round interview case study: a factory needs a fast, reliable way for workers to log downtime causes without slowing the line. The deliverable was the design itself, not a built unit, so what's here is schematic and layout work rather than a soldered board. Manufacturing floors are rough on electronics — motor noise, dust, vibration, workers who just want to press a button and move on. It's a 2-layer KiCad PCB with six illuminated tactile buttons, one per downtime category, confirmed by LED, an 85dB buzzer, and vibration feedback. RC debounce filtering protects every input from VFD electrical noise, the I2C bus is routed clear of the buck converter's switching node, and the whole thing logs to flash before attempting a network call, so nothing gets lost if the connection drops. DRC and ERC clean, Gerbers ready to fabricate. It came up again in later interview rounds even as the company narrowed its cohort.</div>
-          <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
-          <div class="card-footer">
-            <span class="card-stack">ESP32-S3 · KiCad · LittleFS · DS3231 · PN532 NFC · 24VDC</span>
-            <a href="https://github.com/bansalsaksham/PressLog" class="card-link" target="_blank" rel="noopener noreferrer">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. RTL CALCULATOR -->
-      <div class="project-card">
-        <a href="https://github.com/bansalsaksham/RTL-to-GDSII-64-bit-Calculator" target="_blank" rel="noopener noreferrer"><img src="images/project_rtl.jpg" alt="RTL Calculator" class="card-img"></a>
-        <div class="card-body">
-          <div class="card-tag">Digital Design · VLSI · Full Flow</div>
-          <div class="card-title">RTL-to-GDSII 64-bit Calculator</div>
-          <div class="card-desc clamped">Before Silicon Jackets onboarding, Digital Design and Design Verification were lecture-slide concepts I hadn't actually done. The harder part wasn't any single stage — it was carrying one design through every stage myself instead of splitting it up, which most people onboarding this way don't do solo. I built a memory-mapped 64-bit calculator end to end: RTL in SystemVerilog with an FSM controller and SRAM interface, a constrained-random testbench in Cadence Xcelium reaching 99.6% functional coverage confirmed in Verdi, synthesis in Genus, place-and-route with CTS in Innovus, and timing closure in Tempus. I'd already finished the full flow independently before deciding, on my own terms, not to join the org afterward.</div>
-          <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
-          <span class="card-note">New repo with original work in progress · link will be updated</span>
-          <div class="card-footer">
-            <span class="card-stack">SystemVerilog · Cadence Xcelium · Verdi · Genus · Innovus · Tempus</span>
-            <a href="https://github.com/bansalsaksham/RTL-to-GDSII-64-bit-Calculator" class="card-link" target="_blank" rel="noopener noreferrer">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 5. GPT FINE-TUNE -->
-      <div class="project-card">
-        <a href="https://github.com/bansalsaksham/Gpt_Domain_Finetune" target="_blank" rel="noopener noreferrer"><img src="images/project_ai.jpg" alt="GPT Fine-Tune" class="card-img"></a>
-        <div class="card-body">
-          <div class="card-tag">ML · Course Project · ECE2806 · Georgia Tech</div>
-          <div class="card-title">GPT Domain Fine-Tune</div>
-          <div class="card-desc clamped">Course project for ECE2806: a generic language model doesn't know your course material well enough to answer precisely inside a narrow academic domain, so the assignment was to fine-tune one that does. We got starter code, but tuning it well meant understanding why each hyperparameter mattered rather than adjusting numbers until the score moved. Training ran on Georgia Tech's AI Makerspace (a cluster of NVIDIA H100 GPUs available to engineering students), which made full sweeps practical. I fine-tuned a GPT-style causal transformer on a hand-curated corpus covering PCA, reinforcement learning, and decision trees, sweeping learning rate, batch size, attention heads, transformer layers, and tokenizer strategy. The best configuration — lr 0.003, batch size 128, 8 heads, GPT-2 tokenizer — hit a ROUGE-1 score of 0.186 and a Levenshtein distance of 81.75 across 16 standardized prompt-answer pairs.</div>
-          <button class="read-more-btn" onclick="toggleDesc(this)">Read more ↓</button>
-          <div class="card-footer">
-            <span class="card-stack">Python · PyTorch · GPT-2 tokenizer · ROUGE · Levenshtein</span>
-            <a href="https://github.com/bansalsaksham/Gpt_Domain_Finetune" class="card-link" target="_blank" rel="noopener noreferrer">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 6. TRAVERGO -->
-      <div class="project-card">
-        <a href="https://github.com/bansalsaksham/TraverGo" target="_blank" rel="noopener noreferrer"><img src="images/project_travergo.jpg" alt="TraverGo" class="card-img"></a>
-        <div class="card-body">
-          <div class="card-tag">Software · Hackathon · Team: Aamod Varma, Saksham Bansal, Ze Yu Jiang</div>
-          <div class="card-title">TraverGo: AI-Powered Hotel Discovery</div>
-          <div class="card-desc">Built for HackGT: a conversational search layer for hotel discovery, since digging through hundreds of reviews to find the right match doesn't scale. Natural-language queries match against hotel descriptions via a Qdrant vector database, sentiment analysis across reviews rolls up into summary ratings, and a LangChain + OpenAI chatbot handles follow-ups using live location data from the Traversaal Ares API. A decoder model explains why each hotel got recommended, so it's not a black box.</div>
-          <div class="card-award">🏆 Traversaal Ares API Sponsor Track Winner · 1,000+ participant hackathon</div>
-          <div class="card-footer">
-            <span class="card-stack">Python · Qdrant · LangChain · OpenAI · Streamlit · sentence-transformers</span>
-            <a href="https://github.com/bansalsaksham/TraverGo" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 7. DRIPMISE -->
-      <div class="project-card">
-        <img src="images/project_timertap.jpg" alt="Dripmise" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">Mechatronics · Water Conservation</div>
-          <div class="card-title">Dripmise: Automatic Timer Tap</div>
-          <div class="card-desc">An automatic faucet built around the WHO's COVID-era 20-second hand-washing guidance — it cuts water flow during the soap cycle, then resumes for a timed rinse, so the habit and the water savings happen together instead of competing. Installed at Timber Taste, a furniture factory in India, it measured 96,000 litres saved per month. The Ministry of Water Resources, Government of India, gave it an INR 10,000 water-conservation award and named me Water Ambassador for Gurugram.</div>
-          <div class="card-award">🏅 INR 10,000 · Ministry of Water Resources · Water Conservation</div>
-          <div class="card-footer">
-            <span class="card-stack">Arduino · Ultrasonic · Relay · Solenoid Valve</span>
-            <a href="https://github.com/bansalsaksham/automated_timer_tap" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 8. MBED WORDLE -->
-      <div class="project-card">
-        <img src="images/project_wordle.jpg" alt="Mbed Wordle" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">Embedded · ARM Mbed</div>
-          <div class="card-title">Mbed Wordle (2035le)</div>
-          <div class="card-desc">A Wordle clone on ARM Mbed, where memory management isn't something you get to take for granted the way a phone app can. Heap management runs on a doubly linked list, the LCD uses custom pixel-level rendering, and a real-time FSM drives nav-switch input — the kind of constraint that turns a five-minute game into a much longer build.</div>
-          <div class="card-footer">
-            <span class="card-stack">C++ · ARM Mbed · RTOS · LCD</span>
-            <a href="https://github.com/bansalsaksham/wordle_mbed" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 9. SMART CANE / OPTICKER -->
-      <div class="project-card">
-        <img src="images/project_smartcane.jpg" alt="Opticker Smart Cane" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">Assistive Tech · Embedded C</div>
-          <div class="card-title">Opticker: Smart Cane for the Visually Impaired</div>
-          <div class="card-desc">A low-cost assistive cane: IR sensing for drop and stair detection, ultrasonic sensing for forward obstacles, dual-buzzer feedback so a user can tell hazard types apart by sound alone. Designed to stay manufacturable at low cost rather than optimized purely for lab conditions. Presented at Satyam Innovation Fest 2022 in front of Rakesh Bharti Mittal (Vice-Chairman, Bharti Enterprises) and Ritesh Agarwal (Founder and CEO, OYO).</div>
-          <div class="card-footer">
-            <span class="card-stack">Embedded C · IR · Ultrasonic · Buzzer</span>
-            <a href="https://github.com/bansalsaksham/smart_cane" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 10. GRID GUARD -->
-      <div class="project-card">
-        <img src="images/project_gridguard.jpg" alt="Grid Guard" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">ML + Embedded</div>
-          <div class="card-title">Grid Guard</div>
-          <div class="card-desc">A real-time emissions dashboard for commercial buildings. Current and gas sensors feed SVR models that forecast consumption trends, so HVAC and ventilation decisions get made ahead of demand instead of reacting to it — built to help facilities track emissions against regulatory limits while improving operating efficiency at the same time.</div>
-          <div class="card-footer">
-            <span class="card-stack">Python · SVR · Current Sensor · Gas Sensor</span>
-            <a href="https://github.com/bansalsaksham/Grid_Guard" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 11. LINE FOLLOWER -->
-      <div class="project-card">
-        <img src="images/project_linefollower.jpg" alt="Line Follower" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">Robotics · Control</div>
-          <div class="card-title">Line Follower Robot</div>
-          <div class="card-desc">An IR-sensor-array line follower on an Adafruit Motor Shield. Most line followers jerk and overcorrect; the motor control logic here is tuned specifically for smoother alignment and speed correction, so it tracks without the usual stutter.</div>
-          <div class="card-footer">
-            <span class="card-stack">Arduino · IR · Adafruit Motor Shield</span>
-            <a href="https://github.com/bansalsaksham/Line_follower" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 12. HOME SECURITY -->
-      <div class="project-card">
-        <img src="images/project_security.jpg" alt="Home Security" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">Embedded · Security</div>
-          <div class="card-title">Home Security System</div>
-          <div class="card-desc">PIR motion detection combined with LDR light sensing, so the alarm only fires in low-light, high-motion conditions. A PIR sensor alone trips constantly on daylight, pets, and shadows; pairing it with the light sensor cuts the false positives without losing real coverage.</div>
-          <div class="card-footer">
-            <span class="card-stack">Arduino · PIR · LDR · Buzzer</span>
-            <a href="https://github.com/bansalsaksham/Home_Security_Alarm" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 13. TIC TAC TOE -->
-      <div class="project-card">
-        <img src="images/project_tictactoe.jpg" alt="Tic Tac Toe" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">Python · Algorithms · Course Project · CS1301</div>
-          <div class="card-title">Tic-Tac-Toe (Minimax AI)</div>
-          <div class="card-desc">An unbeatable Tic-Tac-Toe opponent built with Minimax search, running the decision tree in real time inside a Pygame interface. A small project, and a clean, complete implementation of adversarial search.</div>
-          <div class="card-footer">
-            <span class="card-stack">Python · Minimax · Pygame</span>
-            <a href="https://github.com/bansalsaksham/tic-tac-toe" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 14. NOISE INDICATOR -->
-      <div class="project-card">
-        <img src="images/project_noise.jpg" alt="Noise Indicator" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">Analog · Signal Processing</div>
-          <div class="card-title">Noise Indicator</div>
-          <div class="card-desc">An analog microphone feeds an Arduino for real-time ambient decibel monitoring, with LED brightness scaling directly to measured sound level, a small project, but useful for understanding analog signal processing fundamentals.</div>
-          <div class="card-footer">
-            <span class="card-stack">Arduino · Analog · Signal Processing</span>
-            <a href="https://github.com/bansalsaksham/noise_indicator" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 15. RECEIPT ROVER -->
-      <div class="project-card">
-        <img src="images/project_receiptrover.jpg" alt="Receipt Rover" class="card-img">
-        <div class="card-body">
-          <div class="card-tag">Python · Automation</div>
-          <div class="card-title">Receipt Rover</div>
-          <div class="card-desc">Turns a photo or pasted receipt text into a spending breakdown and an estimated carbon footprint — the kind of tracking most people skip because doing it by hand is tedious enough that nobody bothers.</div>
-          <div class="card-footer">
-            <span class="card-stack">Python · Data Extraction · Analytics</span>
-            <a href="https://github.com/bansalsaksham/receipt_rover" class="card-link">Repo →</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <footer>
-    <span class="footer-copy">© 2026 Saksham Bansal</span>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/bansalsaksham" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      <a href="https://github.com/bansalsaksham" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="mailto:sakshambansal@gatech.edu">Email</a>
-      <a href="resume-saksham-bansal.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
-    </div>
-  </footer>
-
-  <script>
-    function toggleTheme(){var h=document.documentElement,b=document.getElementById('theme-btn'),c=h.getAttribute('data-theme'),n=c==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);b.textContent=n==='dark'?'[ dark ]':'[ light ]';}
-    (function(){var t=localStorage.getItem('theme')||'light';document.getElementById('theme-btn').textContent=t==='dark'?'[ dark ]':'[ light ]';})(););
-      btn.classList.add('active');
-      var grid=document.getElementById('project-grid');
-      var cards=document.querySelectorAll('.project-card');
-      cards.forEach(function(c){
-        var show=cat==='all'||c.dataset.cat.includes(cat);
-        c.classList.toggle('hidden',!show);
-      });
-      // Switch grid layout based on visible count to avoid gaps
-      var visible=[].filter.call(cards,function(c){return !c.classList.contains('hidden');});
-      if(visible.length===1){grid.style.gridTemplateColumns='1fr';}
-      else{grid.style.gridTemplateColumns='';}
-    }
-    function toggleDesc(btn){
-      var desc=btn.previousElementSibling;
-      var expanded=desc.classList.toggle('clamped')===false;
-      btn.textContent=expanded?'Read less ↑':'Read more ↓';
-    }
+    <section class="project-gallery">
+     <article class="project-tile" data-filter="hardware" data-index="0">
+      <button aria-label="Explore Rootry: Smart Irrigation for Smallholder Farms" class="project-open" data-project="0">
+       <img alt="Rootry: Smart Irrigation for Smallholder Farms" loading="lazy" src="images/project_soilhawk.jpg"/>
+       <span class="project-meta">
+        IoT Hardware &middot; 2019 &ndash; Present
+       </span>
+       <span class="project-title">
+        Rootry: Smart Irrigation for Smallholder Farms
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-0">
+       <div class="detail-media">
+        <img alt="Rootry: Smart Irrigation for Smallholder Farms" src="images/project_soilhawk.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         IoT Hardware &middot; 2019 &ndash; Present
+        </span>
+        <h2>
+         Rootry: Smart Irrigation for Smallholder Farms
+        </h2>
+        <p>
+         Smallholder farms in Delhi-NCR often run without grid power and with irregular labor for manual watering, so crops get overwatered, underwatered, or skipped depending on who's around that day. The sensor logic wasn't the hard part &mdash; building something a farmer with no smartphone could trust without checking on it was. Hysteresis-band&hellip;
+        </p>
+        <p class="detail-stack">
+         ESP32-S3 &middot; KiCad &middot; GSM SIM800L &middot; ESPAsyncWebServer &middot; DHT22
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/Rootry" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="robotics" data-index="1">
+      <button aria-label="Explore A.R.I.S.: Autonomous Rescue and Inspection System" class="project-open" data-project="1">
+       <img alt="A.R.I.S.: Autonomous Rescue and Inspection System" loading="lazy" src="images/project_aris.jpg"/>
+       <span class="project-meta">
+        Robotics &middot; ECE Innovate 2026 &middot; Georgia Tech
+       </span>
+       <span class="project-title">
+        A.R.I.S.: Autonomous Rescue and Inspection System
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-1">
+       <div class="detail-media">
+        <img alt="A.R.I.S.: Autonomous Rescue and Inspection System" src="images/project_aris.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Robotics &middot; ECE Innovate 2026 &middot; Georgia Tech
+        </span>
+        <h2>
+         A.R.I.S.: Autonomous Rescue and Inspection System
+        </h2>
+        <p>
+         An autonomous rescue rover with a non-blocking state machine, ultrasonic clearance sensing, heading correction from an IMU, gas detection, and WebSocket telemetry.
+        </p>
+        <p class="detail-stack">
+         ESP32 &middot; C++ &middot; ESPAsyncWebServer &middot; MPU6050 &middot; MQ-6 &middot; L298N
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/ARIS" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="hardware" data-index="2">
+      <button aria-label="Explore PressLog: Industrial IoT OEE Downtime Logger" class="project-open" data-project="2">
+       <img alt="PressLog: Industrial IoT OEE Downtime Logger" loading="lazy" src="images/project_presslog.jpg"/>
+       <span class="project-meta">
+        PCB Design &middot; Industrial IoT
+       </span>
+       <span class="project-title">
+        PressLog: Industrial IoT OEE Downtime Logger
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-2">
+       <div class="detail-media">
+        <img alt="PressLog: Industrial IoT OEE Downtime Logger" src="images/project_presslog.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         PCB Design &middot; Industrial IoT
+        </span>
+        <h2>
+         PressLog: Industrial IoT OEE Downtime Logger
+        </h2>
+        <p>
+         An industrial IoT downtime logger PCB design, with filtering for noisy environments and offline-first event handling. Design-stage work; the board was not fabricated.
+        </p>
+        <p class="detail-stack">
+         ESP32-S3 &middot; KiCad &middot; LittleFS &middot; DS3231 &middot; PN532 NFC &middot; 24VDC
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/PressLog" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="digital" data-index="3">
+      <button aria-label="Explore RTL-to-GDSII 64-bit Calculator" class="project-open" data-project="3">
+       <img alt="RTL-to-GDSII 64-bit Calculator" loading="lazy" src="images/project_rtl.jpg"/>
+       <span class="project-meta">
+        Digital Design &middot; VLSI &middot; Full Flow
+       </span>
+       <span class="project-title">
+        RTL-to-GDSII 64-bit Calculator
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-3">
+       <div class="detail-media">
+        <img alt="RTL-to-GDSII 64-bit Calculator" src="images/project_rtl.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Digital Design &middot; VLSI &middot; Full Flow
+        </span>
+        <h2>
+         RTL-to-GDSII 64-bit Calculator
+        </h2>
+        <p>
+         A standalone full-flow digital design project spanning SystemVerilog RTL, constrained-random verification, synthesis, physical implementation, and timing closure.
+        </p>
+        <p class="detail-stack">
+         SystemVerilog &middot; Cadence Xcelium &middot; Verdi &middot; Genus &middot; Innovus &middot; Tempus
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/RTL-to-GDSII-64-bit-Calculator" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="software" data-index="4">
+      <button aria-label="Explore GPT Domain Fine-Tune" class="project-open" data-project="4">
+       <img alt="GPT Domain Fine-Tune" loading="lazy" src="images/project_ai.jpg"/>
+       <span class="project-meta">
+        ML &middot; Course Project &middot; ECE2806 &middot; Georgia Tech
+       </span>
+       <span class="project-title">
+        GPT Domain Fine-Tune
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-4">
+       <div class="detail-media">
+        <img alt="GPT Domain Fine-Tune" src="images/project_ai.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         ML &middot; Course Project &middot; ECE2806 &middot; Georgia Tech
+        </span>
+        <h2>
+         GPT Domain Fine-Tune
+        </h2>
+        <p>
+         Course project for ECE2806: a generic language model doesn't know your course material well enough to answer precisely inside a narrow academic domain, so the assignment was to fine-tune one that does. We got starter code, but tuning it well meant understanding why each hyperparameter mattered rather than adjusting numbers until the&hellip;
+        </p>
+        <p class="detail-stack">
+         Python &middot; PyTorch &middot; GPT-2 tokenizer &middot; ROUGE &middot; Levenshtein
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/Gpt_Domain_Finetune" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="software" data-index="5">
+      <button aria-label="Explore TraverGo: AI-Powered Hotel Discovery" class="project-open" data-project="5">
+       <img alt="TraverGo: AI-Powered Hotel Discovery" loading="lazy" src="images/project_travergo.jpg"/>
+       <span class="project-meta">
+        Software &middot; Hackathon &middot; Team: Aamod Varma, Saksham Bansal, Ze Yu Jiang
+       </span>
+       <span class="project-title">
+        TraverGo: AI-Powered Hotel Discovery
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-5">
+       <div class="detail-media">
+        <img alt="TraverGo: AI-Powered Hotel Discovery" src="images/project_travergo.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Software &middot; Hackathon &middot; Team: Aamod Varma, Saksham Bansal, Ze Yu Jiang
+        </span>
+        <h2>
+         TraverGo: AI-Powered Hotel Discovery
+        </h2>
+        <p>
+         Built for HackGT: a conversational search layer for hotel discovery, since digging through hundreds of reviews to find the right match doesn't scale. Natural-language queries match against hotel descriptions via a Qdrant vector database, sentiment analysis across reviews rolls up into summary ratings, and a LangChain + OpenAI chatbot handles follow-ups using&hellip;
+        </p>
+        <p class="detail-stack">
+         Python &middot; Qdrant &middot; LangChain &middot; OpenAI &middot; Streamlit &middot; sentence-transformers
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/TraverGo" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="hardware" data-index="6">
+      <button aria-label="Explore Dripmise: Automatic Timer Tap" class="project-open" data-project="6">
+       <img alt="Dripmise: Automatic Timer Tap" loading="lazy" src="images/project_timertap.jpg"/>
+       <span class="project-meta">
+        Mechatronics &middot; Water Conservation
+       </span>
+       <span class="project-title">
+        Dripmise: Automatic Timer Tap
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-6">
+       <div class="detail-media">
+        <img alt="Dripmise: Automatic Timer Tap" src="images/project_timertap.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Mechatronics &middot; Water Conservation
+        </span>
+        <h2>
+         Dripmise: Automatic Timer Tap
+        </h2>
+        <p>
+         An automatic faucet built around the WHO's COVID-era 20-second hand-washing guidance &mdash; it cuts water flow during the soap cycle, then resumes for a timed rinse, so the habit and the water savings happen together instead of competing. Installed at Timber Taste, a furniture factory in India, it measured 96,000 litres saved&hellip;
+        </p>
+        <p class="detail-stack">
+         Arduino &middot; Ultrasonic &middot; Relay &middot; Solenoid Valve
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/automated_timer_tap" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="hardware" data-index="7">
+      <button aria-label="Explore Mbed Wordle (2035le)" class="project-open" data-project="7">
+       <img alt="Mbed Wordle (2035le)" loading="lazy" src="images/project_wordle.jpg"/>
+       <span class="project-meta">
+        Embedded &middot; ARM Mbed
+       </span>
+       <span class="project-title">
+        Mbed Wordle (2035le)
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-7">
+       <div class="detail-media">
+        <img alt="Mbed Wordle (2035le)" src="images/project_wordle.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Embedded &middot; ARM Mbed
+        </span>
+        <h2>
+         Mbed Wordle (2035le)
+        </h2>
+        <p>
+         A Wordle clone on ARM Mbed, where memory management isn't something you get to take for granted the way a phone app can. Heap management runs on a doubly linked list, the LCD uses custom pixel-level rendering, and a real-time FSM drives nav-switch input &mdash; the kind of constraint that turns a&hellip;
+        </p>
+        <p class="detail-stack">
+         C++ &middot; ARM Mbed &middot; RTOS &middot; LCD
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/wordle_mbed" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="robotics" data-index="8">
+      <button aria-label="Explore Opticker: Smart Cane for the Visually Impaired" class="project-open" data-project="8">
+       <img alt="Opticker: Smart Cane for the Visually Impaired" loading="lazy" src="images/project_smartcane.jpg"/>
+       <span class="project-meta">
+        Assistive Tech &middot; Embedded C
+       </span>
+       <span class="project-title">
+        Opticker: Smart Cane for the Visually Impaired
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-8">
+       <div class="detail-media">
+        <img alt="Opticker: Smart Cane for the Visually Impaired" src="images/project_smartcane.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Assistive Tech &middot; Embedded C
+        </span>
+        <h2>
+         Opticker: Smart Cane for the Visually Impaired
+        </h2>
+        <p>
+         A low-cost assistive cane: IR sensing for drop and stair detection, ultrasonic sensing for forward obstacles, dual-buzzer feedback so a user can tell hazard types apart by sound alone. Designed to stay manufacturable at low cost rather than optimized purely for lab conditions. Presented at Satyam Innovation Fest 2022 in front of&hellip;
+        </p>
+        <p class="detail-stack">
+         Embedded C &middot; IR &middot; Ultrasonic &middot; Buzzer
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/smart_cane" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="hardware" data-index="9">
+      <button aria-label="Explore Grid Guard" class="project-open" data-project="9">
+       <img alt="Grid Guard" loading="lazy" src="images/project_gridguard.jpg"/>
+       <span class="project-meta">
+        ML + Embedded
+       </span>
+       <span class="project-title">
+        Grid Guard
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-9">
+       <div class="detail-media">
+        <img alt="Grid Guard" src="images/project_gridguard.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         ML + Embedded
+        </span>
+        <h2>
+         Grid Guard
+        </h2>
+        <p>
+         A real-time emissions dashboard for commercial buildings. Current and gas sensors feed SVR models that forecast consumption trends, so HVAC and ventilation decisions get made ahead of demand instead of reacting to it &mdash; built to help facilities track emissions against regulatory limits while improving operating efficiency at the same time.
+        </p>
+        <p class="detail-stack">
+         Python &middot; SVR &middot; Current Sensor &middot; Gas Sensor
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/Grid_Guard" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="robotics" data-index="10">
+      <button aria-label="Explore Line Follower Robot" class="project-open" data-project="10">
+       <img alt="Line Follower Robot" loading="lazy" src="images/project_linefollower.jpg"/>
+       <span class="project-meta">
+        Robotics &middot; Control
+       </span>
+       <span class="project-title">
+        Line Follower Robot
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-10">
+       <div class="detail-media">
+        <img alt="Line Follower Robot" src="images/project_linefollower.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Robotics &middot; Control
+        </span>
+        <h2>
+         Line Follower Robot
+        </h2>
+        <p>
+         An IR-sensor-array line follower on an Adafruit Motor Shield. Most line followers jerk and overcorrect; the motor control logic here is tuned specifically for smoother alignment and speed correction, so it tracks without the usual stutter.
+        </p>
+        <p class="detail-stack">
+         Arduino &middot; IR &middot; Adafruit Motor Shield
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/Line_follower" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="hardware" data-index="11">
+      <button aria-label="Explore Home Security System" class="project-open" data-project="11">
+       <img alt="Home Security System" loading="lazy" src="images/project_security.jpg"/>
+       <span class="project-meta">
+        Embedded &middot; Security
+       </span>
+       <span class="project-title">
+        Home Security System
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-11">
+       <div class="detail-media">
+        <img alt="Home Security System" src="images/project_security.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Embedded &middot; Security
+        </span>
+        <h2>
+         Home Security System
+        </h2>
+        <p>
+         PIR motion detection combined with LDR light sensing, so the alarm only fires in low-light, high-motion conditions. A PIR sensor alone trips constantly on daylight, pets, and shadows; pairing it with the light sensor cuts the false positives without losing real coverage.
+        </p>
+        <p class="detail-stack">
+         Arduino &middot; PIR &middot; LDR &middot; Buzzer
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/Home_Security_Alarm" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="software" data-index="12">
+      <button aria-label="Explore Tic-Tac-Toe (Minimax AI)" class="project-open" data-project="12">
+       <img alt="Tic-Tac-Toe (Minimax AI)" loading="lazy" src="images/project_tictactoe.jpg"/>
+       <span class="project-meta">
+        Python &middot; Algorithms &middot; Course Project &middot; CS1301
+       </span>
+       <span class="project-title">
+        Tic-Tac-Toe (Minimax AI)
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-12">
+       <div class="detail-media">
+        <img alt="Tic-Tac-Toe (Minimax AI)" src="images/project_tictactoe.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Python &middot; Algorithms &middot; Course Project &middot; CS1301
+        </span>
+        <h2>
+         Tic-Tac-Toe (Minimax AI)
+        </h2>
+        <p>
+         An unbeatable Tic-Tac-Toe opponent built with Minimax search, running the decision tree in real time inside a Pygame interface. A small project, and a clean, complete implementation of adversarial search.
+        </p>
+        <p class="detail-stack">
+         Python &middot; Minimax &middot; Pygame
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/tic-tac-toe" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="hardware" data-index="13">
+      <button aria-label="Explore Noise Indicator" class="project-open" data-project="13">
+       <img alt="Noise Indicator" loading="lazy" src="images/project_noise.jpg"/>
+       <span class="project-meta">
+        Analog &middot; Signal Processing
+       </span>
+       <span class="project-title">
+        Noise Indicator
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-13">
+       <div class="detail-media">
+        <img alt="Noise Indicator" src="images/project_noise.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Analog &middot; Signal Processing
+        </span>
+        <h2>
+         Noise Indicator
+        </h2>
+        <p>
+         An analog microphone feeds an Arduino for real-time ambient decibel monitoring, with LED brightness scaling directly to measured sound level, a small project, but useful for understanding analog signal processing fundamentals.
+        </p>
+        <p class="detail-stack">
+         Arduino &middot; Analog &middot; Signal Processing
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/noise_indicator" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+     <article class="project-tile" data-filter="software" data-index="14">
+      <button aria-label="Explore Receipt Rover" class="project-open" data-project="14">
+       <img alt="Receipt Rover" loading="lazy" src="images/project_receiptrover.jpg"/>
+       <span class="project-meta">
+        Python &middot; Automation
+       </span>
+       <span class="project-title">
+        Receipt Rover
+       </span>
+       <span class="project-action">
+        Explore details
+        <span aria-hidden="true">
+         &nearrow;
+        </span>
+       </span>
+      </button>
+      <template id="project-data-14">
+       <div class="detail-media">
+        <img alt="Receipt Rover" src="images/project_receiptrover.jpg"/>
+       </div>
+       <div class="detail-info">
+        <span class="micro">
+         Python &middot; Automation
+        </span>
+        <h2>
+         Receipt Rover
+        </h2>
+        <p>
+         Turns a photo or pasted receipt text into a spending breakdown and an estimated carbon footprint &mdash; the kind of tracking most people skip because doing it by hand is tedious enough that nobody bothers.
+        </p>
+        <p class="detail-stack">
+         Python &middot; Data Extraction &middot; Analytics
+        </p>
+        <a class="primary" href="https://github.com/bansalsaksham/receipt_rover" rel="noopener" target="_blank">
+         Explore repository &nearrow;
+        </a>
+       </div>
+      </template>
+     </article>
+    </section>
+    <dialog class="project-dialog">
+     <button aria-label="Close project details" class="close-dialog">
+      &times;
+     </button>
+     <div id="dialog-content">
+     </div>
+    </dialog>
+   </main>
+   <footer class="foot">
+    <span>
+     &copy; 2026 Saksham Bansal
+    </span>
+    <span>
+     Georgia Tech &middot; Electrical Engineering
+    </span>
+   </footer>
+  </div>
+  <script src="assets/fullsite.js">
   </script>
-</body>
+ </body>
 </html>
